@@ -1,0 +1,92 @@
+\documentclass[12pt,titlepage,abstracton]{scrartcl}
+
+%Biblatex & co
+\input{skps.tex}
+\addbibresource{data/quellen.bib}
+
+%Formatierung
+\usepackage{a4wide}
+\usepackage[english,ngerman]{babel} 
+\usepackage[utf8]{inputenc}
+
+\usepackage[style=german]{csquotes}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\parindent 0pt
+\parskip 12pt
+
+\usepackage{graphicx}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%Mathematik
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+
+\numberwithin{equation}{subsection}
+
+
+%Sourcecode
+\lstset{basicstyle=\footnotesize\ttfamily, float=htb,lineskip={-5.0pt}}
+
+%Verlinktes Inhaltsverzeichnis
+\usepackage[colorlinks,
+pdfpagelabels,
+pdfstartview = FitH,
+bookmarksopen = true,
+bookmarksnumbered = true,
+linkcolor = black,
+plainpages = false,
+hypertexnames = false,
+citecolor = black,
+urlcolor = black] {hyperref}
+
+\begin{document}
+
+\pagenumbering{Roman}
+
+\input{data/title}
+
+\renewcommand{\figurename}{Abb.}
+
+%Zusammenfassungen
+\begin{minipage}{\linewidth}
+\begin{abstract}
+\thispagestyle{plain}
+\input{data/zusammenfassung}
+\end{abstract}
+\begin{otherlanguage}{english} 
+\begin{abstract}
+\selectlanguage{english}
+\thispagestyle{plain}
+\input{data/abstract}
+\end{abstract}
+\end{otherlanguage}
+\end{minipage}
+\newpage
+
+%Inhaltsverzeichnis
+\tableofcontents
+\newpage
+
+%Text
+\pagenumbering{arabic}
+\input{data/inhalt}
+\newpage
+
+%Literaturverzeichniss
+\renewcommand{\refname}{Literaturverzeichnis}
+\addcontentsline{toc}{section}{Abbildungs- und \refname}
+\nocite{*}
+\listoffigures
+\printbibheading 
+\printbibliography[nottype=misc,heading=subbibliography, 
+title={Bücher}] 
+\printbibliography[type=misc,heading=subbibliography, 
+title={Webseiten}] 
+
+
+\end{document}

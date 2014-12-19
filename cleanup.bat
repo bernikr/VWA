@@ -1,0 +1,10 @@
+del arbeit.aux
+del arbeit.bbl
+del arbeit.blg
+del arbeit.lof
+del arbeit.log
+del arbeit.out
+del arbeit.run.xml
+del arbeit.synctex.gz
+del arbeit.toc
+del arbeit-blx.bib

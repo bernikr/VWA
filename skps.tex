@@ -1,0 +1,16 @@
+% !TEX root = arbeit.tex
+\usepackage[bibstyle=authoryear,citestyle=authoryear,firstinits=false, backend=bibtex]{biblatex}
+\makeatletter % keine Probleme mit Namen wie "XY von Z"
+\AtBeginDocument{\toggletrue{blx@useprefix}}
+\AtBeginBibliography{\togglefalse{blx@useprefix}}
+\makeatother
+\renewcommand{\postnotedelim}{: }
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat[article,phdthesis,other]{title}{\textit{#1}}
+\DeclareFieldFormat[article]{journal}{\textnormal{#1}}
+\makeatletter
+
+\newcommand{\txtquote}[1]{"`#1"'} %Anführungszeichen für Zitate im Fließtext
+
+\expandafter\def\expandafter\quotation\expandafter{\quotation\setstretch{1}\small\noindent} %einfacher Zeilenabstand und kleinere Schrift für längere Zitate
+
