@@ -8,3 +8,6 @@ del *.run.xml
 del *.synctex.gz
 del *.toc
 del *-blx.bib
+del *.bcf
+del *.fdb_latexmk
+del *.fls
