@@ -24,6 +24,9 @@
 *.synctex.gz(busy)
 *.run.xml
 *.bcf
-VWA.pdf
 *.fls
 *.fdb_latexmk
+
+VWA.pdf
+
+/Protokolle/*.pdf
