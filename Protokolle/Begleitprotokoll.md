@@ -1,6 +1,8 @@
 ---
 title: 'VWA Begleitprotokoll'
 author: Bernhard Kralofsky
+header-includes:
+- \pagenumbering{gobble}
 ---
 \begin{center}
 \begin{tabular}{r|p{7cm}}
