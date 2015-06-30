@@ -1,16 +1,10 @@
 \documentclass[a4paper,11pt]{report}
-\input{VWA-core/vwa}
-\input{VWA-core/citestyle/skp}
-\input{VWA-core/title/skp}
+\input{core/setup}
+\input{core/citestyle/skp}
+\input{core/title/skp}
+\input{data/header}
 
-\addbibresource{data/quellen.bib}
-
-\setTitle{Bitcoin: Die Zukunft einer digitalen Kryptowährung}
-\setAuthor{Bernhard Kralofsky}
-\setClass{8D}{2015/16}
-\setTeacher{Mag. Bernhard Klimbacher}
-\setDate{1}{1}{2016}
-\setEmail{bkralofsky@popperschule.at}
+\addbibresource{data/sources.bib}
 
 \begin{document}
 \skptitle
@@ -25,7 +19,6 @@
 
 \appendix
 
-\skpciteprintlit
-\skpciteprintfig
+\printbibliography
 
 \end{document}
