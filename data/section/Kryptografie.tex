@@ -1,0 +1,39 @@
+\section{Kryptografische Prozesse}
+
+Da Bitcoin ohne Bank auskommt, müssen die dahinterliegenden Prozesse trotz absoluter Transparenz ein hohes Maß an Sicherheit gewähren.
+Hierzu werden vorallem zwei kryptografische Prozesse exessiv genutzt:
+\begin{description}
+    \item[Asymetrische Verschlüsselung], welche benötigt werden um Transaktionen signieren zu können und
+    \item[Hashfunktionen], die ein Wesentlicher Bestandteil der Blockchain sind.
+\end{description}
+
+\subsection{Asymetrische Verschlüsselung}
+
+Unter Asymetrischer Verschlüsselung werden Verschlüsselungen verstanden, welche unterschiedliche Schlüssel zu Ver- und Entschlüsselung benötigen.
+Dies wird meist bewältigt, indem ein Körper definiert wird, in welchem das Inverse zu einem gegebenen Wert nicht trivial zu berechnen ist.
+Man generiert daruaf hin ein Schlüsselpaar mithlfe eines Startwertes und hilfsfunktionen, sodass die Ergebnisse inverse sind.
+
+Hat man so ein Schlüsselpaar bezeichnet man geläufigerweise einen davon als privaten und den anderen als öffentlichen Schlüssel.
+Nachdem der Ersteller des SChlüsselpaares den öffentlichen Schüssel veröfentlicht hat sind mithilfe von asymetrischer Verschlüsselung sind nun folgende zwei Prozesse möglich:
+\begin{enumerate}
+    \item Jemand verschlüsselt eine Nachricht mit dem öffentlichen Schlüssel und sendet sie an den Ersteller.
+    Entschlüsselbar ist die Nachricht nur mit dem privaten Schlüssel.
+    Der vorteil gegenüber symetrischer Verschlüsselung liegt darin, dass es keinen geheimen Schlüsselaustausch gibt, bei dem der Schlüssel abgefangen werden kann.
+    \item Der Inhaber privaten Schlüssels verschlüsselt eine Nachricht (oder einen Hash davon) mit dem privaten Schlüssel.
+    Jeder kann diese Nachricht nun mit dem öffentlichen Schlüssel entschlüsseln und lesen.
+    Da aber nur eine Person den privaten Schlüssel inne hat, lässt sich somit die Authentizität der Nachricht überprüfen.
+\end{enumerate}
+
+Die Anwendung bei Bitcoin erfolgt dabei so, dass jeder, der Bitcoins verwenden möchte ein Schlüsselpaar erstellt.
+Der öffentlich Schlüssel wird zur Bitcoinadresse.
+Möchte man eine Transaktion durchfüren, wird diese mit dem privaten Schlüssel signiert.
+Daher ist von jedem überprüfbar, ob eine Transaktion auch wirklich von einer Berechtigten Person durchgeführt wurde.
+
+\subsection{Hashfunktion}
+
+Eine Hashfunktion bildet eine Prüfsumme aus einer Nachricht. \Skpcite{schmeh_kryptografie:_2013}{226}
+Es wird unterschieden zwischen kryptografischen und nicht-kryptografischen Hashfunktionen.
+Eine nicht-kryptografische Hashfunktion liefert eine Prüfsumme, deren Änderung bei Änderung des Urbildes vorhersehbar ist.
+So wäre die Quersumme die einfachste nicht-kryptografische Hashfunktion.
+
+\emph{Kryptographische Hashfunktionen} zeichnen sich dadurch aus, dass man bei gegebenen Hashwert nicht einfach ein Urbild rekonstruieren kann, das diesen Hashwert erfüllt.
