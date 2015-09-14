@@ -27,6 +27,6 @@
 *.fls
 *.fdb_latexmk
 
-VWA.pdf
+/*.pdf
 
 /Protokolle/*.pdf
