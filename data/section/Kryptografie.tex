@@ -1,35 +1,35 @@
 \section{Kryptografische Prozesse}
 
 Da Bitcoin ohne zentrale Stelle auskommt, müssen die dahinterliegenden Prozesse trotz absoluter Transparenz ein hohes Maß an Sicherheit gewähren.
-Hierzu werden hauptsächlich zwei kryptografische Prozesse exessiv genutzt:
+Hierzu werden hauptsächlich zwei kryptografische Prozesse exzessiv genutzt:
 \begin{description}
-    \item[Asymetrische Verschlüsselung] wird benötigt, um Transaktionen signieren zu können
+    \item[Asymmetrische Verschlüsselung] wird benötigt, um Transaktionen signieren zu können
     \item[Hashfunktionen] sind ein Wesentlicher Bestandteil der Blockchain.
 \end{description}
 
-\subsection{Asymetrische Verschlüsselung}
+\subsection{Asymmetrische Verschlüsselung}
 
-Unter Asymetrischer Verschlüsselung werden Verschlüsselungen verstanden, welche unterschiedliche Schlüssel zu Ver- und Entschlüsselung benötigen.
+Unter Asymmetrischer Verschlüsselung werden Verschlüsselungen verstanden, welche unterschiedliche Schlüssel zu Ver- und Entschlüsselung benötigen.
 Dies wird bewältigt, indem ein Gruppe definiert wird, in welchem das Inverse zu einem gegebenen Wert nicht trivial zu berechnen ist.
 
 Eine Gruppe bezeichnet eine abgeschlossene Menge auf der eine assoziative Verknüpfung definiert ist.
 Außerdem muss es ein neutrales Element geben und jedes Element ein Inverses aufweisen. \Skpcf[182]{schmeh_kryptografie:_2013}
-Beispiele für solge Gruppen ist beispielsweise die Addion in den ganzen Zahlen, die Multiplikation in den reellen Zahlen, die Moduloaddition, sowie die Modulomultiplikation in der Menge $\{ 1, \dotsc, p \mid p \in \mathbb{P}\}$.
+Beispiele für solche Gruppen ist beispielsweise die Addition in den ganzen Zahlen, die Multiplikation in den reellen Zahlen, die Moduloaddition, sowie die Modulomultiplikation in der Menge $\{ 1, \dotsc, p \mid p \in \mathbb{P}\}$.
 
-In den meisten Gruppen ist das Inverse trivial zu berechen und es existiert eine brauchbare Umkehrfunktion.
+In den meisten Gruppen ist das Inverse trivial zu berechnen und es existiert eine brauchbare Umkehrfunktion.
 Betrachten wir beispielsweise eine Gruppe über $\mathbb{R}$ mit der Verknüpfung $y=a^x$.
 Hier ist die Umkehrfunktion $x=\log_a y$ und das Inverse $x'=\frac{1}{x}$, sodass $a=(a^x)^{x'}$ gilt.
 Anders sieht es mit der Moduloexponentialfunktion aus.
 Hierbei ist die Umkehrfunktion --~der diskrete Logarithmus~-- für größere Werte mit heutigen Algorithmen nicht in absehbarer Zeit zu berechnen.
 Auch das Inverse lässt sich nicht diskret berechnen. \Skpcf[184]{schmeh_kryptografie:_2013}
 
-Man generiert daruaf hin ein Schlüsselpaar mithlfe eines Startwertes und Hilfsfunktionen, sodass die Ergebnisse Inverse sind.
+Man generiert daraufhin ein Schlüsselpaar Mithilfe eines Startwertes und Hilfsfunktionen, sodass die Ergebnisse Inverse sind.
 Hat man so ein Schlüsselpaar bezeichnet man geläufigerweise einen davon als privaten und den anderen als öffentlichen Schlüssel.
-Nachdem der Ersteller des Schlüsselpaares den öffentlichen Schüssel veröfentlicht hat, sind mithilfe von asymetrischer Verschlüsselung sind nun folgende zwei Prozesse möglich:
+Nachdem der Ersteller des Schlüsselpaares den öffentlichen Schüssel veröffentlicht hat, sind mithilfe von asymmetrischer Verschlüsselung sind nun folgende zwei Prozesse möglich:
 \begin{enumerate}
     \item Jemand verschlüsselt eine Nachricht mit dem öffentlichen Schlüssel und sendet sie an den Ersteller.
     Entschlüsselbar ist die Nachricht nur mit dem privaten Schlüssel.
-    Der Vorteil gegenüber symetrischer Verschlüsselung liegt darin, dass es keinen geheimen Schlüsselaustausch gibt, bei dem der Schlüssel abgefangen werden kann.
+    Der Vorteil gegenüber symmetrischer Verschlüsselung liegt darin, dass es keinen geheimen Schlüsselaustausch gibt, bei dem der Schlüssel abgefangen werden kann.
     \item Der Inhaber privaten Schlüssels verschlüsselt eine Nachricht (oder einen Hash davon) mit dem privaten Schlüssel.
     Jeder kann diese Nachricht nun mit dem öffentlichen Schlüssel entschlüsseln und lesen.
     Da aber nur eine Person den privaten Schlüssel inne hat, lässt sich somit die Authentizität der Nachricht überprüfen.
@@ -41,7 +41,7 @@ Die Entschlüsselung erfolgt analog dazu mit dem geheimen Schlüssel $g$: $K \eq
 
 Die Anwendung bei Bitcoin erfolgt dabei so, dass jeder, der Bitcoins verwenden möchte ein Schlüsselpaar erstellt.
 Der öffentlich Schlüssel wird zur Bitcoinadresse.
-Möchte man eine Transaktion durchfüren, wird diese mit dem privaten Schlüssel signiert.
+Möchte man eine Transaktion durchführen, wird diese mit dem privaten Schlüssel signiert.
 Daher ist von jedem überprüfbar, ob eine Transaktion auch wirklich von einer Berechtigten Person durchgeführt wurde.
 
 \subsection{Hashfunktion}
@@ -51,4 +51,4 @@ Es wird unterschieden zwischen kryptografischen und nicht-kryptografischen Hashf
 Eine nicht-kryptografische Hashfunktion liefert eine Prüfsumme, deren Änderung bei Änderung des Urbildes vorhersehbar ist.
 So wäre die Quersumme eine einfache nicht-kryptografische Hashfunktion.
 
-\emph{Kryptographische Hashfunktionen} zeichnen sich dadurch aus, dass man bei gegebenen Hashwert nicht einfach ein Urbild rekonstruieren kann, das diesen Hashwert erfüllt.
+\emph{Kryptografische Hashfunktionen} zeichnen sich dadurch aus, dass man bei gegebenen Hashwert nicht einfach ein Urbild rekonstruieren kann, das diesen Hashwert erfüllt.
