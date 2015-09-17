@@ -13,7 +13,7 @@ Unter Asymmetrischer Verschlüsselung werden Verschlüsselungen verstanden, welc
 Dies wird bewältigt, indem ein Gruppe definiert wird, in welchem das Inverse zu einem gegebenen Wert nicht trivial zu berechnen ist.
 
 Eine Gruppe bezeichnet eine abgeschlossene Menge auf der eine assoziative Verknüpfung definiert ist.
-Außerdem muss es ein neutrales Element geben und jedes Element ein Inverses aufweisen. \Skpcf[182]{schmeh_kryptografie:_2013}
+Außerdem muss es ein neutrales Element geben und jedes Element ein Inverses aufweisen. \Cf[182]{schmeh}
 Beispiele für solche Gruppen ist beispielsweise die Addition in den ganzen Zahlen, die Multiplikation in den reellen Zahlen, die Moduloaddition, sowie die Modulomultiplikation in der Menge $\{ 1, \dotsc, p \mid p \in \mathbb{P}\}$.
 
 In den meisten Gruppen ist das Inverse trivial zu berechnen und es existiert eine brauchbare Umkehrfunktion.
@@ -21,7 +21,7 @@ Betrachten wir beispielsweise eine Gruppe über $\mathbb{R}$ mit der Verknüpfun
 Hier ist die Umkehrfunktion $x=\log_a y$ und das Inverse $x'=\frac{1}{x}$, sodass $a=(a^x)^{x'}$ gilt.
 Anders sieht es mit der Moduloexponentialfunktion aus.
 Hierbei ist die Umkehrfunktion --~der diskrete Logarithmus~-- für größere Werte mit heutigen Algorithmen nicht in absehbarer Zeit zu berechnen.
-Auch das Inverse lässt sich nicht diskret berechnen. \Skpcf[184]{schmeh_kryptografie:_2013}
+Auch das Inverse lässt sich nicht diskret berechnen. \Cf[184]{schmeh}
 
 Man generiert daraufhin ein Schlüsselpaar Mithilfe eines Startwertes und Hilfsfunktionen, sodass die Ergebnisse Inverse sind.
 Hat man so ein Schlüsselpaar bezeichnet man geläufigerweise einen davon als privaten und den anderen als öffentlichen Schlüssel.
@@ -46,7 +46,7 @@ Daher ist von jedem überprüfbar, ob eine Transaktion auch wirklich von einer B
 
 \subsection{Hashfunktion}
 
-Eine Hashfunktion bildet eine Prüfsumme aus einer Nachricht. \Skpcf[226]{schmeh_kryptografie:_2013}
+Eine Hashfunktion bildet eine Prüfsumme aus einer Nachricht. \Cf[226]{schmeh}
 Es wird unterschieden zwischen kryptografischen und nicht-kryptografischen Hashfunktionen.
 Eine nicht-kryptografische Hashfunktion liefert eine Prüfsumme, deren Änderung bei Änderung des Urbildes vorhersehbar ist.
 So wäre die Quersumme eine einfache nicht-kryptografische Hashfunktion.
