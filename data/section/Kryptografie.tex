@@ -3,8 +3,8 @@
 Da Bitcoin ohne zentrale Stelle auskommt, müssen die dahinterliegenden Prozesse trotz absoluter Transparenz ein hohes Maß an Sicherheit gewähren.
 Hierzu werden hauptsächlich zwei kryptografische Prozesse exzessiv genutzt:
 \begin{description}
-    \item[Asymmetrische Verschlüsselung] wird benötigt, um Transaktionen signieren zu können
-    \item[Hashfunktionen] sind ein Wesentlicher Bestandteil der Blockchain.
+    \item[Asymmetrische Verschlüsselung] wird benötigt, um Transaktionen signieren zu können und somit um jemanden, der Bitcoins ausgeben möchte zu authentifizeren
+    \item[Hashfunktionen] sind ein Wesentlicher Bestandteil der Blockchain, wie auch in Abschnitt \ref{sec:mechanics} erklärt.
 \end{description}
 
 \subsection{Asymmetrische Verschlüsselung}
@@ -21,7 +21,7 @@ Betrachten wir beispielsweise eine Gruppe über $\mathbb{R}$ mit der Verknüpfun
 Hier ist die Umkehrfunktion $x=\log_a y$ und das Inverse $x'=\frac{1}{x}$, sodass $a=(a^x)^{x'}$ gilt.
 Anders sieht es mit der Moduloexponentialfunktion aus.
 Hierbei ist die Umkehrfunktion --~der diskrete Logarithmus~-- für größere Werte mit heutigen Algorithmen nicht in absehbarer Zeit zu berechnen.
-Auch das Inverse lässt sich nicht diskret berechnen. \Cf[184]{schmeh}
+Daher ist auch das Inverse nicht diskret berechnenbar. \Cf[184]{schmeh}
 
 Man generiert daraufhin ein Schlüsselpaar Mithilfe eines Startwertes und Hilfsfunktionen, sodass die Ergebnisse Inverse sind.
 Hat man so ein Schlüsselpaar bezeichnet man geläufigerweise einen davon als privaten und den anderen als öffentlichen Schlüssel.
@@ -46,9 +46,18 @@ Daher ist von jedem überprüfbar, ob eine Transaktion auch wirklich von einer B
 
 \subsection{Hashfunktion}
 
-Eine Hashfunktion bildet eine Prüfsumme aus einer Nachricht. \Cf[226]{schmeh}
+Eine Hashfunktion bildet eine Prüfsumme aus einer Nachricht, welche man beispielsweise benutzt, um festzustellen, ob die Nachricht verändert wurde. \Cf[226]{schmeh}
 Es wird unterschieden zwischen kryptografischen und nicht-kryptografischen Hashfunktionen.
 Eine nicht-kryptografische Hashfunktion liefert eine Prüfsumme, deren Änderung bei Änderung des Urbildes vorhersehbar ist.
 So wäre die Quersumme eine einfache nicht-kryptografische Hashfunktion.
+Nicht-kryptographische Hashfunktionen finden zum Beispiel als Prüfziffern in Kontonummern, ISBNs und Barcodes vor, wo sie ein irrtümliches Ändern der Nachricht (d.h. Nummer) verhindern sollen.
+Vertippt man sich z.b. bei der Eingabe einer Kontonummer, so kann der Computer feststellen, dass die eingegebene Nummer nicht mehr mit der gegebenen Nachricht übereinstimmt und diese als Fehlerhaft makieren.
+Hierbei ist bei einer Änderung der Nachricht (auch Urbild genannt) vorhersehbar, wie sich die Prüfsumme ändern wird.
+Veringert man zum Beispiel eine Ziffer um 1, so wird auch die Quersumme um 1 weniger.
+Folglich lässt sich zu einer gegebenen Zahl ein Urbild finden, das jene als Prüfsumme hat. \Cfmulti[35f]{schneier}[226]{schmeh}
 
-\emph{Kryptografische Hashfunktionen} zeichnen sich dadurch aus, dass man bei gegebenen Hashwert nicht einfach ein Urbild rekonstruieren kann, das diesen Hashwert erfüllt.
+\emph{Kryptografische Hashfunktionen} zeichnen sich dadurch aus, dass man bei gegebenen Hashwert nicht einfach ein Urbild rekonstruieren kann, das jenen erfüllt.
+Ebenso soll es mit realistischem Aufwand nicht möglich sein, zwei Urbilder zu finden, die denselben Hashwert haben. \Cf[289f]{wobst}
+Solche Einweg-Hashes erlauben es zum Beispiel Prüfziffern zu erstellen, die nicht nur gegen zufällige Veränderungen Schutz bieten, sondern auch gegebüber böswilligen Angriffen.
+Übermittelt man jemanden zum Beispiel eine ausführbare Datei und teilt ihm auf einem sicheren Weg den Hash der Datei mit, kann sich der Empfänger --~sofern die Hashwerte übereinstimmen~-- sicher sein, dass er die Datei unverändert ist.
+Denn wenn ein Angreifer zum Beispiel versucht einen Virus in die Datei einzuschleusen, wird sich der Hashwert verändern, egal wie sehr sich der Angreifer bemüht.
