@@ -1,2 +1,38 @@
 \section{Technische Funktionsweise von Bitcoin}
 \label{sec:mechanics}
+
+Mithilfe dieser kryptografischen Mechanismen lässt sich ein Zahlungsnetzwerk aufbauen, in welchem --~im Gegensatz zu herkömmlichen Banken~-- keine zentrale vertauenswürdige Stelle notwendig ist.
+Wie sich der Stand eines Kontos aus vorangegangen Transaktionen ergibt, so setzt sich auch der Kontostand einer Bitcoinadresse aus vorhergegangen Transaktionen statt.
+Da es keine zentrale Stelle gibt und das Guthaben jeder Adresse daher öffentlich verfügbar sein muss, müssen auch alle Transaktionen öffentlich gemacht werden.
+
+\subsection{Transaktionen}
+
+Transaktionen sind wohl der wichtigste Bestandteil des Bitcoin-Netzwerks.
+Denn anstatt einen Kontostand zu speichern und ihn bei jeder Transaktion zu verändern (was anfällig für Manipulation wäre), beziehen sich Transaktion auf vorhergegangene Transaktionen, damit die Herkunft und somit die Gültigkeit verifiziert werden.
+Eine Transaktion kann dabei aus meheren Eingängen und mehreren Ausgängen bestehen.
+Ein Eingang referenziert dabei immer einen Ausgang einer Vorherigen Transaktion, welcher dann vollständig aufgebraucht werden muss.
+Möchte man nur einen Teil der Bitcoins aus dem alten Ausgang ausgeben, so muss es zwei Ausgänge geben, wobei einer einen Teil an eine Andere Adresse sendet und der andere den Rest wider zurück an einen selbst.
+
+\subsection{Adressen}
+
+Mithilfe der Bitcoinadressen wird gewährleistet, dass nur authorisierte Personen die Ausgänge vergangener Transaktionen als Eingang in ihrer Transaktion verwenden können.
+Bei den Adressen handelt es sich genaugenommen um ein asymetrisches Schlüsselpaar, mit dem Transaktionen signiert werden, wobei der öffentliche Schlüssel als Adresse zum Empfangen von Bitcoins dient.
+Erstellt man eine Transaktion, so referenziert man im Ausgang den öffentlichen Schlüssel des Empfänger der Bitcoin.
+Möchte dieser die Bitcoin nun weitergeben so muss er diesen Ausgang in dem Eingang seiner Transaktion refernzieren.
+Anschließend bildet er den Hashwert der Transaktion und signiert diesen mit seinem privaten Schlüssel.
+Somit ist von jedem nachvollziehbar, dass es sich beim Ersteller der Transaktion um den Inhaber der Bitcoins handelt, indem man die Signatur mit dem öffentlichen Schlüssel aus der vorhergegangen Transaktion überprüft.
+
+Diese öffentliche Nachvollziehbarkeit ist der Schlüssel in der Funktionsweise von Bitcoin.
+Erst durch die aus der asymetrischen Verschlüsselung folgenden Signaturen ist es möglich den Urheber einer Transaktion ohne eine zentrale Vertrauensstelle zu überprüfen.
+
+\subsection{Die Blockchain}
+
+Um die Transaktion zu speichern werden mehrere Transaktion in sogenannte \emph{Blocks} zusammengefasst.
+Da jeder Block neben den Transaktionen auch eine Referenz in Form des Hashes auf den vorherigen Block beinhaltet, entsteht eine lineare Kette von Blöcken -- \emph{Blockchain} genannt.
+Aufgrund der Linearität der Blockchain kann gewährleistet werden, dass jeder Transaktions-Ausgang nur einmal von einem Eingang aufgegriffen wird und somit sogenannten \emph{Double-Spending} (d.h. das zwei- oder mehrmalige Verwenden eines Ausganges in verschiedenen Transaktionen) verhindert wird.
+
+\subsubsection{Mining}
+
+Unter \emph{Mining} versteht man das generieren von Blöcken.
+Da man möchte das Blöcke nur so langsam erschaffen werden, dass sich das Bitcoin-Netzwerk über einen gemeinsamen aktuellen Block einig ist, ist ein gewisser Aufwand mit der Erstellungen eines Blockes verbunden.
+Diese \emph{Proof-of-Work}-Mechanismen sorgen dafür, dass durchschnittlich nur alle 10 Minuten ein neuer Block erzeugt wird.
