@@ -54,3 +54,12 @@ Während es in den Anfängen von Bitcoin profitabel war, mit herkömmlichen Proz
 Da Grafikkarten für manche Rechenoperationen schneller sind als Prozessoren wurden darauf diese verwendet, womit fast eine Millarde Berechnungen pro Sekunde möglich wurden.
 Seit Ende 2012 gibt es auch dezidierte Mining-Hardware, welche nur dazu gebaut wird, Bitcoin-Mining zu betreiben.
 Mit dieser Hardware sind inzwischen Geschwindigkeiten von bis zu 8~THash/s (8~Billionen Hashwertberechnungen pro Sekunde) möglich.
+
+\subsubsection{Linearität}
+
+Sollte es einmal vorkommen, dass ein Miner einen Block findet, bevor er den aktuellsten Block vom Bitcoin-Netzwerk erhalten hat, kommt es zu einer Verzweigung der Blockchain.
+Hierbei kann es vorkommen, dass dieselben Bitcoins in jedem der Blöcke an verschiedene Empfänger gesendet werden.
+Um zu verhindern, dass man somit Bitcoins verdoppeln kann, darf nur einer der zwei gleichzeitig generierten Blöcke weiterverwendet werden, während der andere für ungültig erklährt wird.
+Die Auswahl des ungültigen Blocks geschieht gewissermaßen durch Zufall.
+Während jeder Bitcoin-Client und jeder Miner zuerst den Block verwendet, den er als erstes erhalten hat, werden sich alle Beteiligten über einen Block einig, sobald ein Miner den nächsten Block findet, egal, welcher der beiden Blöcke als Ursprung dient.
+Die in dem jetzt ungültigen Block gelisteten Transaktionen sind somit noch nicht verifiziert worden und werden in die nächsten Blöcke aufgenommen.
