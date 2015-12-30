@@ -14,7 +14,7 @@ Dies wird bewältigt, indem ein Gruppe definiert wird, in welchem das Inverse zu
 
 Eine Gruppe bezeichnet eine abgeschlossene Menge auf der eine assoziative Verknüpfung definiert ist.
 Außerdem muss es ein neutrales Element geben und jedes Element ein Inverses aufweisen.
-\Cf[182]{schmeh}
+\Cf[182]{schmeh2013}
 Beispiele für solche Gruppen ist beispielsweise die Addition in den ganzen Zahlen, die Multiplikation in den reellen Zahlen, die Moduloaddition, sowie die Modulomultiplikation in der Menge $\{ 1, \dotsc, p \mid p \in \mathbb{P}\}$.
 
 In den meisten Gruppen ist das Inverse trivial zu berechnen und es existiert eine brauchbare Umkehrfunktion.
@@ -23,7 +23,7 @@ Hier ist die Umkehrfunktion $x=\log_a y$ und das Inverse $x'=\frac{1}{x}$, sodas
 Anders sieht es mit der Moduloexponentialfunktion aus.
 Hierbei ist die Umkehrfunktion --~der diskrete Logarithmus~-- für größere Werte mit heutigen Algorithmen nicht in absehbarer Zeit zu berechnen.
 Daher ist auch das Inverse nicht diskret berechnenbar.
-\Cf[184]{schmeh}
+\Cf[184]{schmeh2013}
 
 Man generiert daraufhin ein Schlüsselpaar Mithilfe eines Startwertes und Hilfsfunktionen, sodass die Ergebnisse Inverse sind.
 Hat man so ein Schlüsselpaar bezeichnet man geläufigerweise einen davon als privaten und den anderen als öffentlichen Schlüssel.
@@ -49,7 +49,7 @@ Daher ist von jedem überprüfbar, ob eine Transaktion auch wirklich von einer B
 \subsection{Hashfunktion}
 
 Eine Hashfunktion bildet eine Prüfsumme aus einer Nachricht, welche man beispielsweise benutzt, um festzustellen, ob die Nachricht verändert wurde.
-\Cf[226]{schmeh}
+\Cf[226]{schmeh2013}
 Es wird unterschieden zwischen kryptografischen und nicht-kryptografischen Hashfunktionen.
 Eine nicht-kryptografische Hashfunktion liefert eine Prüfsumme, deren Änderung bei Änderung des Urbildes vorhersehbar ist.
 So wäre die Quersumme eine einfache nicht-kryptografische Hashfunktion.
@@ -58,7 +58,7 @@ Vertippt man sich z.b. bei der Eingabe einer Kontonummer, so kann der Computer f
 Hierbei ist bei einer Änderung der Nachricht (auch Urbild genannt) vorhersehbar, wie sich die Prüfsumme ändern wird.
 Veringert man zum Beispiel eine Ziffer um 1, so wird auch die Quersumme um 1 weniger.
 Folglich lässt sich zu einer gegebenen Zahl ein Urbild finden, das jene als Prüfsumme hat.
-\Cfmulti[35f]{schneier}[226]{schmeh}
+\Cfmulti[35f]{schneier}[226]{schmeh2013}
 
 \emph{Kryptografische Hashfunktionen} zeichnen sich dadurch aus, dass man bei gegebenen Hashwert nicht einfach ein Urbild rekonstruieren kann, das jenen erfüllt.
 Ebenso soll es mit realistischem Aufwand nicht möglich sein, zwei Urbilder zu finden, die denselben Hashwert haben.
