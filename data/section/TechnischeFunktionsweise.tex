@@ -1,7 +1,7 @@
 \section{Technische Funktionsweise von Bitcoin}
 \label{sec:mechanics}
 
-Mithilfe dieser kryptografischen Mechanismen lässt sich ein Zahlungsnetzwerk aufbauen, in welchem --~im Gegensatz zu herkömmlichen Banken~-- keine zentrale vertauenswürdige Stelle notwendig ist.
+Mithilfe dieser kryptografischen Mechanismen lässt sich ein Zahlungsnetzwerk aufbauen, in welchem --~im Gegensatz zu herkömmlichen Banken~-- keine zentrale vertrauenswürdige Stelle notwendig ist.
 Wie sich der Stand eines Kontos aus vorangegangen Transaktionen ergibt, so setzt sich auch der Kontostand einer Bitcoinadresse aus vorhergegangen Transaktionen statt.
 Da es keine zentrale Stelle gibt und das Guthaben jeder Adresse daher öffentlich verfügbar sein muss, müssen auch alle Transaktionen öffentlich gemacht werden.
 
@@ -9,21 +9,21 @@ Da es keine zentrale Stelle gibt und das Guthaben jeder Adresse daher öffentlic
 
 Transaktionen sind wohl der wichtigste Bestandteil des Bitcoin-Netzwerks.
 Denn anstatt einen Kontostand zu speichern und ihn bei jeder Transaktion zu verändern (was anfällig für Manipulation wäre), beziehen sich Transaktion auf vorhergegangene Transaktionen, damit die Herkunft und somit die Gültigkeit verifiziert werden.
-Eine Transaktion kann dabei aus meheren Eingängen und mehreren Ausgängen bestehen.
+Eine Transaktion kann dabei aus mehreren Eingängen und mehreren Ausgängen bestehen.
 Ein Eingang referenziert dabei immer einen Ausgang einer Vorherigen Transaktion, welcher dann vollständig aufgebraucht werden muss.
 Möchte man nur einen Teil der Bitcoins aus dem alten Ausgang ausgeben, so muss es zwei Ausgänge geben, wobei einer einen Teil an eine Andere Adresse sendet und der andere den Rest wider zurück an einen selbst.
 
 \subsection{Adressen}
 
-Mithilfe der Bitcoinadressen wird gewährleistet, dass nur authorisierte Personen die Ausgänge vergangener Transaktionen als Eingang in ihrer Transaktion verwenden können.
-Bei den Adressen handelt es sich genaugenommen um ein asymetrisches Schlüsselpaar, mit dem Transaktionen signiert werden, wobei der öffentliche Schlüssel als Adresse zum Empfangen von Bitcoins dient.
+Mithilfe der Bitcoinadressen wird gewährleistet, dass nur autorisierte Personen die Ausgänge vergangener Transaktionen als Eingang in ihrer Transaktion verwenden können.
+Bei den Adressen handelt es sich genaugenommen um ein asymmetrisches Schlüsselpaar, mit dem Transaktionen signiert werden, wobei der öffentliche Schlüssel als Adresse zum Empfangen von Bitcoins dient.
 Erstellt man eine Transaktion, so referenziert man im Ausgang den öffentlichen Schlüssel des Empfänger der Bitcoin.
-Möchte dieser die Bitcoin nun weitergeben so muss er diesen Ausgang in dem Eingang seiner Transaktion refernzieren.
+Möchte dieser die Bitcoin nun weitergeben so muss er diesen Ausgang in dem Eingang seiner Transaktion referenzieren.
 Anschließend bildet er den Hashwert der Transaktion und signiert diesen mit seinem privaten Schlüssel.
 Somit ist von jedem nachvollziehbar, dass es sich beim Ersteller der Transaktion um den Inhaber der Bitcoins handelt, indem man die Signatur mit dem öffentlichen Schlüssel aus der vorhergegangen Transaktion überprüft.
 
 Diese öffentliche Nachvollziehbarkeit ist der Schlüssel in der Funktionsweise von Bitcoin.
-Erst durch die aus der asymetrischen Verschlüsselung folgenden Signaturen ist es möglich den Urheber einer Transaktion ohne eine zentrale Vertrauensstelle zu überprüfen.
+Erst durch die aus der asymmetrischen Verschlüsselung folgenden Signaturen ist es möglich den Urheber einer Transaktion ohne eine zentrale Vertrauensstelle zu überprüfen.
 
 \subsection{Die Blockchain}
 
@@ -41,7 +41,7 @@ Hierzu erstellt eine \emph{Mining-Software} einen temporären Block aus bestehen
 Dann berechnet sie den Hashwert des Blockes und vergleicht ihn mit dem Ziel-Wert.
 Ist der Hash kleiner als der Zielwert, handelt es sich um einen gültigen Block.
 Sollte der Hash größer sein, so gibt es einen 32-Bit großen Teil des Blockes (\emph{Nonce} genannt), welcher nach belieben verändert werden kann, um einen entsprechenden Hash zu erhalten.
-Da sich der Hash scheinbar zufällig ändert, muss der Miner relativ viele Hashwerte berechnen, bis er einen gülitgen findet.
+Da sich der Hash scheinbar zufällig ändert, muss der Miner relativ viele Hashwerte berechnen, bis er einen gültigen findet.
 Der Zielwert wird anhand einer Formel alle zwei Wochen angepasst, damit egal wie viel Mining betrieben wird, immer durchschnittlich alle 10 Minuten ein gültiger Block gefunden wird.
 
 Um die Miner für die aufgewandte Rechenleistung und Stromkosten zu entschädigen, ist in jedem Block eine Transaktion enthalten, in der der Miner einen gewissen Betrag erhält, den es vorher nicht gab.
@@ -50,8 +50,8 @@ Die erschaffene Belohnung für das Mining betrug am Anfang 50 Bitcoins pro Block
 Außerdem können Miner die Differenzen zwischen Eingang und Ausgang in Transaktionen, die sie in ihrem Block einschließen behalten.
 
 Aufgrund dieser Eigenschaften kann Mining profitabel sein, wenn der Wert der erhaltenen Bitcoins über dem der Anschaffungs und Betriebskosten der Mining-Hardware liegt.
-Während es in den Anfängen von Bitcoin profitabel war, mit herkömmlichen Prozessoren Mining zu betreiben, welche zirka einige Millionen Hashwerte pro Sekunde berechen können wurde bald durch die hohe anzahl der Miner der Zielwert niedriger und es somit nicht mehr profitabel.
-Da Grafikkarten für manche Rechenoperationen schneller sind als Prozessoren wurden darauf diese verwendet, womit fast eine Millarde Berechnungen pro Sekunde möglich wurden.
+Während es in den Anfängen von Bitcoin profitabel war, mit herkömmlichen Prozessoren Mining zu betreiben, welche zirka einige Millionen Hashwerte pro Sekunde berechnen können wurde bald durch die hohe Anzahl der Miner der Zielwert niedriger und es somit nicht mehr profitabel.
+Da Grafikkarten für manche Rechenoperationen schneller sind als Prozessoren wurden darauf diese verwendet, womit fast eine Milliarde Berechnungen pro Sekunde möglich wurden.
 Seit Ende 2012 gibt es auch dezidierte Mining-Hardware, welche nur dazu gebaut wird, Bitcoin-Mining zu betreiben.
 Mit dieser Hardware sind inzwischen Geschwindigkeiten von bis zu 8~THash/s (8~Billionen Hashwertberechnungen pro Sekunde) möglich.
 
@@ -59,7 +59,7 @@ Mit dieser Hardware sind inzwischen Geschwindigkeiten von bis zu 8~THash/s (8~Bi
 
 Sollte es einmal vorkommen, dass ein Miner einen Block findet, bevor er den aktuellsten Block vom Bitcoin-Netzwerk erhalten hat, kommt es zu einer Verzweigung der Blockchain.
 Hierbei kann es vorkommen, dass dieselben Bitcoins in jedem der Blöcke an verschiedene Empfänger gesendet werden.
-Um zu verhindern, dass man somit Bitcoins verdoppeln kann, darf nur einer der zwei gleichzeitig generierten Blöcke weiterverwendet werden, während der andere für ungültig erklährt wird.
+Um zu verhindern, dass man somit Bitcoins verdoppeln kann, darf nur einer der zwei gleichzeitig generierten Blöcke weiterverwendet werden, während der andere für ungültig erklärt wird.
 Die Auswahl des ungültigen Blocks geschieht gewissermaßen durch Zufall.
 Während jeder Bitcoin-Client und jeder Miner zuerst den Block verwendet, den er als erstes erhalten hat, werden sich alle Beteiligten über einen Block einig, sobald ein Miner den nächsten Block findet, egal, welcher der beiden Blöcke als Ursprung dient.
 Die in dem jetzt ungültigen Block gelisteten Transaktionen sind somit noch nicht verifiziert worden und werden in die nächsten Blöcke aufgenommen.
