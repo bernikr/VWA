@@ -1,3 +1,4 @@
+Doch auch wenn Bitcoin vom konzept wie eine ideale Währung wirkt, gibt es dennoch einige Probleme, die es davon abhalten weiter verbreitet zu sein.
 Doch Bitcoin ist bei weitem noch nicht reif genug, um als Währung weit verbreitet zu sein, müssen doch erst einige konzeptuelle und technische Probleme aus dem Weg geräumt werden.
 
 \section{Instabilität}
@@ -34,3 +35,50 @@ Denn das Bitcoin-Mining ist ein stromaufwändiger Prozess und freien Wettbewerb 
 Um den Stromverbrauch zu senken müsste entweder die Mininghardware effizienter werden (was allerdings wieder die Anzahl der Miner vergrößert) oder das Mining weniger profitabel.
 Doch versucht man die Belohnung eines Blockes durch ändern des Bitcoin-Codes zu veringern, wird dieser Fork vermutlich nie angewandt werden, da letzendlich die Miner diejenigen sind, die mit ihrer Verwendung von Abwandlungen über Änderungen in der Bitcoin-Software bestimmen.
 Man kann nur darauf hoffen, dass die in Abschnitt \ref{subsec:mining} beschriebene Halbierung der Belohnung eines Blockes alle vier Jahre genügend Miner aufhören lässt und so den Stromverbrauch senkt.
+
+\section{Block-Size-Debatte}
+
+Doch nicht alle Probleme sind vom konzept so grundlegenden und scheinbar unlösbar.
+2010 wurde die Größe eines Blockes von 36MB auf 1MB herabgesetzt, um zu vermeiden, das Miner Spam-Blöcke mit mehereren Megabyte an sinnlosem Inhalt erstellen und diese die Blockchain unnötig vergrößern.
+Damals war das auch kein Problem, da sich die durchschnittle Größe eines Blockes im Bereich von wenigen Kilobyte befand.
+Anfang 2015 stellte man allerdings fest, dass aufgrund der immer weiteren Verbreitung von Bitcoin die Anzahl der Transaktionen und somit auch die Größe der Blöcke rasant anstieg und drohte an die 1MB-Grenze zu gelangen.
+\Cf{caffyn}
+
+Die Folgen des erreichens wären nach einigen Meinungen fatal.
+Da es nicht mehr alle Transaktionen in die Blöcke aufgenommen werden können, kommt es zu einem Wettbewerb bei der Transaktionsgebür.
+Nur noch Transaktionen welche den Minern die meisten Bitcoins überlassen werden bestätigt, andere Transaktionen mit zu wenige Gebür befinden sich dann für immer im Rückstau der Miner.
+Während viele dabei das Ende von Bitcoin befürchten, sind andere der Meinung, dass diese Form des freien Marktes die Lösung der Debatte sei.
+
+Die Vielzahl der anderen Lösungsvorschläge haben den Punkt, das Limit anzuheben gemein, unterscheiden sich doch in Details wie, der Höhe des Limits oder den Verlauf über Längere Zeit.
+Unter anderem schlägt Gavin Anderson, der ehemalige leitende Entwickler des Bitcoin Projektes vor, das Limit sofort auf 8MB anzuheben und danach alle zwei Jahre eine Vergrößerung um 40\% durchzuführen.
+Andere Vorschläge sind zum Beispiel die sofortige Anhebung auf 2MB und danach eine jährliche Erhöhung von 17,7\%.
+\Cf{caffyn}
+
+Während diese Details unwichtig erscheinen, ist es aufgrund der dezentralen Natur des Bitcoin-Netzwerkes nicht möglich, Änderung vorzunehmen, solange kein Konsens erreicht ist.
+Erst wenn sich die Entwickler einig sind, kann einer der Vorschläge umgesetzt werden.
+Doch nicht nur die Entwickler haben ein Wort mitzureden:
+Wenn nach Veröffentlichung einer neuen Version mehr als die Hälfte der Miner bei der alten Version bleibt, wird die längste Blockchain weiterhin die alte Version verwenden und es wird zu keinen Änderungen kommen.
+Die Zustimmugn der Miner zu bekommen ist jedoch auch schwirig, sind doch mehr als 50\% der Miner in China angesiedelt wo die durchschnittliche Internetgeschwindigkeit mit 3,4 Megabyte pro Sekunde \cf{china} relativ langsam ist, weshalb sie befürchen, dass sie, sollte das Limit erhöht werden, neue Blocke erst zu spät erhalten und dadurch einen Nachteil gegenüber Ländern mit schnellerer Internetverbindung haben.
+\Cf{caffyn}
+
+Der letze große Vorschlag in der Debatte wird \emph{Segregated Witness} genannt.
+Im Gegensatz zu den anderen Vorschlägen, bei welchen es sich um \emph{Hard-Forks} handelt (d.h. die neue Version beinhaltet nicht rückwärtskompatible Änderung, wodurch Bitcoin in eine neue und eine alte Version aufgespalten werden) ist \emph{Segrageted Witness} ein \emph{Soft-Fork}, bei welchem alte Bitcoin-Clients weiterhin verwendbar sind und nur die Miner auf die neueste Version updaten müssen.
+\emph{Segrageted Witness} schlägt vor, die eigentlich Transaktion ("Wer schickt wieviel Bitcoins an wen?") von dem Teil zu trennen der nur für Zeugen von Relevanz ist (v.a. Signatur) und diesen Teil nur solange zu speichern, solange er von Relevanz ist und ihn daher nicht in die Blockchain aufnehmen.
+Denn sobald eine neue Transaktion auf eine alte aufbaut, ist es nicht mehr nötig, die alte Transaktion auf Gültigkeit zu überprüfen, da diese sowieso nicht mehr veränbdert werden kann.
+Da diese Informationen für Zeugen derzeit zirka zwei Drittel der Blockchain beanspruchen, könnte dadurch viel Speicherplatz gespart werden und das 1MB-Limit aufrecht erhalten werden.
+\Cf{rizzo}
+
+Doch es gibt auch Kritik an diesem Vorschlag:
+Aufgrund der Bedingung rückwärtskompatibel zu sein, muss die Signatur in einem bereits bestehenden Feld der Transaktion (im konkreten Fall das \emph{Coinbase}-Feld) eingschlossen werden, welches dadurch zweckentfremdet wird.
+Da Miner dieses Feld unter anderem dafür verwenden über Änderungen in der Bitcoin Software abzustimmen, gibt es Befürchtungen, dass durch \emph{Segragated Witness} die Mining-Software verkomplizieren, da dieses Feld nun abhängig vom Rest der Transaktionen ist.
+\Cf{rizzo}
+
+Letztendlich ist die \emph{Block-Size-Debatte} noch lange nicht abgeschlossen, doch es gibt Hoffnung zu einem Ende zu kommen, wie auch Young in seinem Artikel auf \url{newsbtc.com} im Jänner 2015 darlegt:
+
+\begin{longquote}{young}
+Due to the disputes between these two sides, miners, bitcoin organizations, startups, core developers and experts failed to reach a consensus, extending the debate for years.
+However, instant cryptocurrencies exchange Shapeshift.io founder and CEO Erik Voorhees predict that the bitcoin community wil reach a consensus in 2016.
+\end{longquote}
+
+Da die durchschnittliche Größe eines Blockes derzeit erst etwas über einem halben Megabyte liegt, ist diese Debatte zwar wichtig für die Zukunft von Bitcoin, doch nicht dringend für die aktuelle Situation, da derzeit noch deutlich Spielraum nach oben vorhanden ist, wodurch Bitcoin zumindest in naher Zukunft noch voll funktionsfähig bleiben sollte.
+\Cf{young}
