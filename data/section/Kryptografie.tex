@@ -9,13 +9,19 @@ Hierzu werden hauptsächlich zwei kryptografische Prozesse exzessiv genutzt:
 
 \subsection{Asymmetrische Verschlüsselung}
 
-Unter Asymmetrischer Verschlüsselung werden Verschlüsselungen verstanden, welche unterschiedliche Schlüssel zu Ver- und Entschlüsselung benötigen.
-Dies wird bewältigt, indem ein Gruppe definiert wird, in welchem das Inverse zu einem gegebenen Wert nicht trivial zu berechnen ist.
+Bei traditionellen symmetrischen Verschlüsselungen, teilen sich Sender und Empfänger einen geheimen Schlüssel, der zum ver- und entschlüsseln verwendet wird.
+Beispielsweise möchte Alice eine Nachricht an Bob senden ohne das Eve ihren Inhalt mitbekommt, obwohl sie den gesammten Nachrichtenverkehr zwischen den beiden mitließt.
+Wenn die beiden über einen gemeinsamen, Eve nicht bekannten Schlüssel verfügen, so kann Alice ihre Nachricht verschlüsseln, an Bob senden und dieser mit demselben Schlüssel entschlüsseln ohne das Eve den Inhalt erfährt.
+Doch wenn sie sich noch nicht über einen gemeinsamen Schlüssel verfügen, ist es schwer sich diesen gegenseitig zukommen zu lassen, ohne dass Eve davon erfährt.
 
-Eine Gruppe bezeichnet eine abgeschlossene Menge auf der eine assoziative Verknüpfung definiert ist.
+An dieser Stelle setzen \emph{asymetrische Verschlüsselungen} an.
+Unter diesen werden Verschlüsselungen verstanden, welche im gegensatz zu symetrischen Schlüsseln unterschiedliche Schlüssel zu Ver- und Entschlüsselung benötigen.
+Dies wird meist bewältigt, indem eine Gruppe definiert wird, in welchem das Inverse zu einem gegebenen Wert nicht trivial zu berechnen ist.
+
+Eine \emph{Gruppe} bezeichnet eine abgeschlossene Menge auf der eine assoziative Verknüpfung definiert ist.
 Außerdem muss es ein neutrales Element geben und jedes Element ein Inverses aufweisen.
 \Cf[182]{schmeh2013}
-Beispiele für solche Gruppen ist beispielsweise die Addition in den ganzen Zahlen, die Multiplikation in den reellen Zahlen, die Moduloaddition, sowie die Modulomultiplikation in der Menge $\{ 1, \dotsc, p \mid p \in \mathbb{P}\}$.
+Beispiele für solche Gruppen ist beispielsweise die Addition in den ganzen Zahlen, die Multiplikation in den reellen Zahlen, die Moduloaddition in einem beliebigen Restlklassenring, sowie die Modulomultiplikation in der Menge $\{ 1, \dotsc, p \mid p \in \mathbb{P}\}$.
 
 In den meisten Gruppen ist das Inverse trivial zu berechnen und es existiert eine brauchbare Umkehrfunktion.
 Betrachten wir beispielsweise eine Gruppe über $\mathbb{R}$ mit der Verknüpfung $y=a^x$.
@@ -25,16 +31,17 @@ Hierbei ist die Umkehrfunktion --~der diskrete Logarithmus~-- für größere Wer
 Daher ist auch das Inverse nicht diskret berechenbar.
 \Cf[184]{schmeh2013}
 
-Man generiert daraufhin ein Schlüsselpaar Mithilfe eines Startwertes und Hilfsfunktionen, sodass die Ergebnisse Inverse sind.
-Hat man so ein Schlüsselpaar bezeichnet man geläufigerweise einen davon als privaten und den anderen als öffentlichen Schlüssel.
-Nachdem der Ersteller des Schlüsselpaares den öffentlichen Schüssel veröffentlicht hat, sind mithilfe von asymmetrischer Verschlüsselung sind nun folgende zwei Prozesse möglich:
+Um von der asymmetrischen Verschlüsselung Gebrauch zu machen, erstellt Alice Mithilfe einer Hilfsfunktion ein zwei Zahlen, welche über eine definierte Gruppe inverse sind.
+Einen der Werte --~den privaten Schlüssel~-- behält Alice für sich und den anderen schickt sie mitsamt der definierten Gruppe an Bob.
+Hierbei ist es egal, ob auch andere Personen den Schlüssel erhalten, da dieser öffentlich ist.
+Nachdem Bob den öffentlichen Schlüssel von Alice erhalten hat, sind zwei Kryptographische Prozesse möglich:
 \begin{enumerate}
-    \item Jemand verschlüsselt eine Nachricht mit dem öffentlichen Schlüssel und sendet sie an den Ersteller.
-    Entschlüsselbar ist die Nachricht nur mit dem privaten Schlüssel.
-    Der Vorteil gegenüber symmetrischer Verschlüsselung liegt darin, dass es keinen geheimen Schlüsselaustausch gibt, bei dem der Schlüssel abgefangen werden kann.
-    \item Der Inhaber privaten Schlüssels verschlüsselt eine Nachricht (oder einen Hash davon) mit dem privaten Schlüssel.
-    Jeder kann diese Nachricht nun mit dem öffentlichen Schlüssel entschlüsseln und lesen.
-    Da aber nur eine Person den privaten Schlüssel inne hat, lässt sich somit die Authentizität der Nachricht überprüfen.
+    \item Bob verschlüsselt eine Nachricht mit dem öffentlichen Schlüssel und sendet sie an Alice.
+    Da nur Alice den privaten Schlüssel hat, kann Eve mit der Nachricht nicht anfangen.
+    \item Alice verschlüsselt eine Nachricht (oder einen Hash davon) mit dem privaten Schlüssel.
+    Bob, aber auch Eve, kann diese Nachricht nun mit dem öffentlichen Schlüssel entschlüsseln und lesen.
+    Da aber nur Alice den privaten Schlüssel inne hat, lässt sich somit die Authentizität der Nachricht überprüfen.
+    So kann Bob sich sicher sein, dass diese nicht auf dem Weg verändert wurde.
 \end{enumerate}
 
 Die Prozesse der Ver- und Entschlüsselung sind (bis auf den verwendeten Schlüssel) identisch und bestehen nur aus der Anwendung der in der Gruppe definierten Verknüpfung mit dem Schlüssel.
@@ -42,7 +49,7 @@ Im Beispiel mit dem Moduloexponential erfolgt die Verschlüsselung eines Klartex
 Die Entschlüsselung erfolgt analog dazu mit dem geheimen Schlüssel $g$: $K \equiv G^g \pmod{m}$.
 
 Die Anwendung bei Bitcoin erfolgt dabei so, dass jeder, der Bitcoins verwenden möchte ein Schlüsselpaar erstellt.
-Der öffentlich Schlüssel wird zur Bitcoinadresse.
+Der öffentliche Schlüssel wird zur Bitcoinadresse.
 Möchte man eine Transaktion durchführen, wird diese mit dem privaten Schlüssel signiert.
 Daher ist von jedem überprüfbar, ob eine Transaktion auch wirklich von einer Berechtigten Person durchgeführt wurde.
 
