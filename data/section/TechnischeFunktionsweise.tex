@@ -9,29 +9,28 @@ Da es keine zentrale Stelle gibt und das Guthaben jeder Adresse daher öffentlic
 
 \begin{figure}
     \begin{center}
-        \includegraphics{transactionchain}
-    	\caption{Unverzweigte Transaktionskette \parencite[2]{nakamoto}}
-    	\label{fig:transactionchain}
-    \end{center}
-\end{figure}
-
-\begin{figure}
-    \begin{center}
 		\includegraphics{transaction}
-    	\caption{Transaktion mit mehreren Aus- und Eingängen \parencite[5]{nakamoto}}
+    	\caption{Transaktion aus Aus- und Eingängen \parencite[5]{nakamoto}}
     	\label{fig:transaction}
     \end{center}
 \end{figure}
 
 Transaktionen sind wohl der wichtigste Bestandteil des Bitcoin-Netzwerks.
 Denn anstatt einen Kontostand zu speichern und ihn bei jeder Transaktion zu verändern (was anfällig für Manipulation wäre), beziehen sich Transaktion auf vorhergegangene Transaktionen, damit die Herkunft und somit die Gültigkeit verifiziert werden.
-Eine Transaktion kann dabei aus mehreren Eingängen und mehreren Ausgängen bestehen.
+Um Bitcoin zu versendenden, muss man also eine vorhergeganngene Transaktion referenzieren, durch welche man die Bitcoins erhalten hat, um zu Beweisen, dass man diese besitzt.
+Wie in Abblildung \ref{fig:transaction} dargestellt, kann eine Transaktion dabei aus mehreren Eingängen und mehreren Ausgängen bestehen.
 Ein Eingang referenziert dabei immer einen Ausgang einer Vorherigen Transaktion, welcher dann vollständig aufgebraucht werden muss.
-Möchte man nur einen Teil der Bitcoins aus dem alten Ausgang ausgeben, so muss es zwei Ausgänge geben, wobei einer einen Teil an eine Andere Adresse sendet und der andere den Rest wider zurück an einen selbst.
-
-
+Möchte man nur einen Teil der Bitcoins aus dem alten Ausgang ausgeben, so muss es zwei Ausgänge geben, wobei einer einen Teil an eine andere Adresse sendet und der andere den Rest wider zurück an einen selbst.
 
 \subsection{Adressen}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics{transactionchain}
+    	\caption{Unverzweigte Transaktionskette \parencite[2]{nakamoto}}
+    	\label{fig:transactionchain}
+    \end{center}
+\end{figure}
 
 Mithilfe der Bitcoinadressen wird gewährleistet, dass nur autorisierte Personen die Ausgänge vergangener Transaktionen als Eingang in ihrer Transaktion verwenden können.
 Bei den Adressen handelt es sich genaugenommen um ein asymmetrisches Schlüsselpaar, mit dem Transaktionen signiert werden, wobei der öffentliche Schlüssel als Adresse zum Empfangen von Bitcoins dient.
@@ -39,19 +38,12 @@ Erstellt man eine Transaktion, so referenziert man im Ausgang den öffentlichen 
 Möchte dieser die Bitcoin nun weitergeben so muss er diesen Ausgang in dem Eingang seiner Transaktion referenzieren.
 Anschließend bildet er den Hashwert der Transaktion und signiert diesen mit seinem privaten Schlüssel.
 Somit ist von jedem nachvollziehbar, dass es sich beim Ersteller der Transaktion um den Inhaber der Bitcoins handelt, indem man die Signatur mit dem öffentlichen Schlüssel aus der vorhergegangen Transaktion überprüft.
+Abbildung \ref{fig:transactionchain} zeigt eine Darstellung einer so entstehenden Transaktionskette, in der Bitcoins von Besitzer 0 bis zu Besitzer 3 wandern.
 
 Diese öffentliche Nachvollziehbarkeit ist der Schlüssel in der Funktionsweise von Bitcoin.
 Erst durch die aus der asymmetrischen Verschlüsselung folgenden Signaturen ist es möglich den Urheber einer Transaktion ohne eine zentrale Vertrauensstelle zu überprüfen.
 
 \subsection{Die Blockchain}
-
-\begin{figure}
-    \begin{center}
-		\includegraphics{blockchain}
-    	\caption{Vereinfachte Darstellung der Blockchain \parencite[3]{nakamoto}}
-    	\label{fig:blockchain}
-    \end{center}
-\end{figure}
 
 Um die Transaktion zu speichern werden mehrere Transaktion in sogenannte \emph{Blocks} zusammengefasst.
 Da jeder Block neben den Transaktionen auch eine Referenz in Form des Hashes auf den vorherigen Block beinhaltet, entsteht eine lineare Kette von Blöcken -- \emph{Blockchain} genannt.
@@ -64,7 +56,16 @@ Unter \emph{Mining} versteht man das generieren von Blöcken.
 Da man möchte das Blöcke nur so langsam erschaffen werden, dass sich das Bitcoin-Netzwerk über einen gemeinsamen aktuellen Block einig ist, ist ein gewisser Aufwand mit der Erstellungen eines Blockes verbunden.
 Diese \emph{Proof-of-Work}-Mechanismen sorgen dafür, dass durchschnittlich nur alle 10 Minuten ein neuer Block erzeugt wird.
 
-Hierzu erstellt eine \emph{Mining-Software} einen temporären Block aus bestehenden, noch nicht in der Blockchain vorhandenen Transaktionen.
+\begin{figure}
+    \begin{center}
+        \includegraphics{blockchain}
+        \caption{Vereinfachte Darstellung der Blockchain \parencite[3]{nakamoto}}
+        \label{fig:blockchain}
+    \end{center}
+\end{figure}
+
+Hierzu erstellt eine \emph{Mining-Software} einen temporären Block aus bestehenden, noch nicht in der Blockchain vorhandenen Transaktionen und dem Hash des vorherigen Blockes.
+(Siehe Abbildung \ref{fig:blockchain})
 Dann berechnet sie den Hashwert des Blockes und vergleicht ihn mit dem Ziel-Wert.
 Ist der Hash kleiner als der Zielwert, handelt es sich um einen gültigen Block.
 Sollte der Hash größer sein, so gibt es einen 32-Bit großen Teil des Blockes (\emph{Nonce} genannt), welcher nach belieben verändert werden kann, um einen entsprechenden Hash zu erhalten.
