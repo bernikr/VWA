@@ -4,7 +4,7 @@ Da Bitcoin ohne zentrale Stelle auskommt, müssen die dahinterliegenden Prozesse
 Hierzu werden hauptsächlich zwei kryptografische Prozesse exzessiv genutzt:
 \begin{description}
     \item[Asymmetrische Verschlüsselung] wird benötigt, um Transaktionen signieren zu können und somit um jemanden, der Bitcoins ausgeben möchte zu authentifizieren
-    \item[Hashfunktionen] sind ein Wesentlicher Bestandteil der Blockchain, wie auch in Abschnitt \ref{sec:mechanics} erklärt.
+    \item[Hashfunktionen] sind ein wesentlicher Bestandteil der Blockchain, wie auch in Abschnitt \ref{sec:mechanics} erklärt.
 \end{description}
 
 \subsection{Asymmetrische Verschlüsselung}
@@ -40,7 +40,7 @@ Nachdem Bob den öffentlichen Schlüssel von Alice erhalten hat, sind zwei Krypt
     Da nur Alice den privaten Schlüssel hat, kann Eve mit der Nachricht nicht anfangen.
     \item Alice verschlüsselt eine Nachricht (oder einen Hash davon) mit dem privaten Schlüssel.
     Bob, aber auch Eve, kann diese Nachricht nun mit dem öffentlichen Schlüssel entschlüsseln und lesen.
-    Da aber nur Alice den privaten Schlüssel inne hat, lässt sich somit die Authentizität der Nachricht überprüfen.
+    Da aber nur Alice den privaten Schlüssel innehat, lässt sich somit die Authentizität der Nachricht überprüfen.
     So kann Bob sich sicher sein, dass diese nicht auf dem Weg verändert wurde.
 \end{enumerate}
 
@@ -60,7 +60,7 @@ Eine Hashfunktion bildet eine Prüfsumme aus einer Nachricht, welche man beispie
 Es wird unterschieden zwischen kryptografischen und nicht-kryptografischen Hashfunktionen.
 Eine nicht-kryptografische Hashfunktion liefert eine Prüfsumme, deren Änderung bei Änderung des Urbildes vorhersehbar ist.
 So wäre die Quersumme eine einfache nicht-kryptografische Hashfunktion.
-Nicht-kryptographische Hashfunktionen finden zum Beispiel als Prüfziffern in Kontonummern, ISBNs und Barcodes vor, wo sie ein irrtümliches Ändern der Nachricht (d.h. Nummer) verhindern sollen.
+Nicht-kryptographische Hashfunktionen finden zum Beispiel als Prüfziffern in Kontonummern, ISBNs und Barcodes vor, wo sie ein irrtümliches Ändern der Nachricht (d.~h. Nummer) verhindern sollen.
 Vertippt man sich zum Beispiel bei der Eingabe einer Kontonummer, so kann der Computer feststellen, dass die eingegebene Nummer nicht mehr mit der gegebenen Nachricht übereinstimmt und diese als Fehlerhaft markieren.
 Hierbei ist bei einer Änderung der Nachricht (auch Urbild genannt) vorhersehbar, wie sich die Prüfsumme ändern wird.
 Verringert man zum Beispiel eine Ziffer um 1, so wird auch die Quersumme um 1 weniger.

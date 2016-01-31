@@ -21,9 +21,9 @@ Bitcoins fügen diesen Transaktionen nur sinnlose Zwischenschritte hinzu die unp
 
 \section{Betrug}
 
-Durch die Pseudonymität und Unumkehrbarkeit von Bitcointransaktionen wird Bitcoin des öfteren für betrügerische Zwecke eingesetzt.
+Durch die Pseudonymität und Unumkehrbarkeit von Bitcointransaktionen wird Bitcoin des Öfteren für betrügerische Zwecke eingesetzt.
 So sind Bitcoin das bevorzugte Zahlungsmittel von Erpresserviren und böswillige Shops akzeptieren Bitcoins ohne jemals Waren auszusenden.
-Auch der private Key auf der eigenen Festplatte bietet Hackern eine Angriffsmöglichkeit.
+Auch der private Schlüssel auf der eigenen Festplatte bietet Hackern eine Angriffsmöglichkeit.
 Gerade bei größeren Unternehmen der Bitcoin-Welt kann ein Bitcoin Diebstahl fatal sein.
 So wurden Bitpay 1,8 Millionen US-Dollar entwendet, indem es dem Dieb gelungen war, \begin{quote}{simonite}den Firmenchef zum Überweisen der Summe zu bewegen, in dem er per E-Mail den Finanzchef nachahmte.\end{quote}
 
@@ -33,15 +33,15 @@ Laut einem Artikel von Christopher Malmo aus dem Online-Magazin Motherboard \beg
 Denn das Bitcoin-Mining ist ein energieaufwändiger Prozess und freien Wettbewerb des Mining wird die verwendete Rechenleistung und damit der verbrauchte Strom solange steigen, wie es profitabel ist.
 
 Um den Stromverbrauch zu senken müsste entweder die Mininghardware effizienter werden (was allerdings wieder die Anzahl der Miner vergrößert) oder das Mining weniger profitabel.
-Doch versucht man die Belohnung eines Blockes durch ändern des Bitcoin-Codes zu verringern, wird dieser Fork vermutlich nie angewandt werden, da letzendlich die Miner diejenigen sind, die mit ihrer Verwendung von Abwandlungen über Änderungen in der Bitcoin-Software bestimmen.
+Doch versucht man die Belohnung eines Blockes durch ändern des Bitcoin-Codes zu verringern, wird dieser Fork vermutlich nie angewandt werden, da letztendlich die Miner diejenigen sind, die mit ihrer Verwendung von Abwandlungen über Änderungen in der Bitcoin-Software bestimmen.
 Man kann nur darauf hoffen, dass die in Abschnitt \ref{subsec:mining} beschriebene Halbierung der Belohnung eines Blockes alle vier Jahre genügend Miner aufhören lässt und so den Stromverbrauch senkt.
 
 \section{Block-Size-Debatte}
 
 Doch nicht alle Probleme sind vom Konzept so grundlegenden und scheinbar unlösbar.
-2010 wurde die Größe eines Blockes von 36MB auf 1MB herabgesetzt, um zu vermeiden, das Miner Spam-Blöcke mit mehreren Megabyte an sinnlosem Inhalt erstellen und diese die Blockchain unnötig vergrößern.
+2010 wurde die Größe eines Blockes von 36~MB auf 1~MB herabgesetzt, um zu vermeiden, das Miner Spam-Blöcke mit mehreren Megabyte an sinnlosem Inhalt erstellen und diese die Blockchain unnötig vergrößern.
 Damals war das auch kein Problem, da sich die durchschnittliche Größe eines Blockes im Bereich von wenigen Kilobyte befand.
-Anfang 2015 stellte man allerdings fest, dass aufgrund der immer weiteren Verbreitung von Bitcoin die Anzahl der Transaktionen und somit auch die Größe der Blöcke rasant anstieg und drohte an die 1MB-Grenze zu gelangen.
+Anfang 2015 stellte man allerdings fest, dass aufgrund der immer weiteren Verbreitung von Bitcoin die Anzahl der Transaktionen und somit auch die Größe der Blöcke rasant anstieg und drohte an die 1~MB-Grenze zu gelangen.
 \Cf{caffyn}
 
 Die Folgen des Erreichens wären nach einigen Meinungen fatal.
@@ -49,9 +49,9 @@ Da es nicht mehr alle Transaktionen in die Blöcke aufgenommen werden können, k
 Nur noch Transaktionen welche den Minern die meisten Bitcoins überlassen werden bestätigt, andere Transaktionen mit zu wenige Gebühr befinden sich dann für immer im Rückstau der Miner.
 Während viele dabei das Ende von Bitcoin befürchten, sind andere der Meinung, dass diese Form des freien Marktes die Lösung der Debatte sei.
 
-Die Vielzahl der anderen Lösungsvorschläge haben den Punkt, das Limit anzuheben gemein, unterscheiden sich doch in Details wie, der Höhe des Limits oder den Verlauf über Längere Zeit.
-Unter anderem schlägt Gavin Anderson, der ehemalige leitende Entwickler des Bitcoin Projektes vor, das Limit sofort auf 8MB anzuheben und danach alle zwei Jahre eine Vergrößerung um 40\% durchzuführen.
-Andere Vorschläge sind zum Beispiel die sofortige Anhebung auf 2MB und danach eine jährliche Erhöhung von 17,7\%.
+Die Vielzahl der anderen Lösungsvorschläge haben den Punkt, das Limit anzuheben gemein, unterscheiden sich doch in Details wie, der Höhe des Limits oder den Verlauf über längere Zeit.
+Unter anderem schlägt Gavin Anderson, der ehemalige leitende Entwickler des Bitcoin Projektes vor, das Limit sofort auf 8~MB anzuheben und danach alle zwei Jahre eine Vergrößerung um 40\% durchzuführen.
+Andere Vorschläge sind zum Beispiel die sofortige Anhebung auf 2~MB und danach eine jährliche Erhöhung von 17,7\%.
 \Cf{caffyn}
 
 Während diese Details unwichtig erscheinen, ist es aufgrund der dezentralen Natur des Bitcoin-Netzwerkes nicht möglich, Änderung vorzunehmen, solange kein Konsens erreicht ist.
@@ -62,10 +62,10 @@ Die Zustimmung der Miner zu bekommen ist jedoch auch schwierig, sind doch mehr a
 \Cf{caffyn}
 
 Der letze große Vorschlag in der Debatte wird \emph{Segregated Witness} genannt.
-Im Gegensatz zu den anderen Vorschlägen, bei welchen es sich um \emph{Hard-Forks} handelt (d.h. die neue Version beinhaltet nicht rückwärtskompatible Änderung, wodurch Bitcoin in eine neue und eine alte Version aufgespalten werden) ist \emph{Segrageted Witness} ein \emph{Soft-Fork}, bei welchem alte Bitcoin-Clients weiterhin verwendbar sind und nur die Miner auf die neueste Version updaten müssen.
-\emph{Segrageted Witness} schlägt vor, die eigentlich Transaktion ("Wer schickt wie viele Bitcoins an wen?") von dem Teil zu trennen der nur für Zeugen von Relevanz ist (v.a. Signatur) und diesen Teil nur solange zu speichern, solange er von Relevanz ist und ihn daher nicht in die Blockchain aufnehmen.
+Im Gegensatz zu den anderen Vorschlägen, bei welchen es sich um \emph{Hard-Forks} handelt (d.~h. die neue Version beinhaltet nicht rückwärtskompatible Änderung, wodurch Bitcoin in eine neue und eine alte Version aufgespalten werden) ist \emph{Segrageted Witness} ein \emph{Soft-Fork}, bei welchem alte Bitcoin-Clients weiterhin verwendbar sind und nur die Miner auf die neueste Version updaten müssen.
+\emph{Segrageted Witness} schlägt vor, die eigentlich Transaktion ("`Wer schickt wie viele Bitcoins an wen?"') von dem Teil zu trennen der nur für Zeugen von Relevanz ist (v.a. Signatur) und diesen Teil nur solange zu speichern, solange er von Relevanz ist und ihn daher nicht in die Blockchain aufnehmen.
 Denn sobald eine neue Transaktion auf eine alte aufbaut, ist es nicht mehr nötig, die alte Transaktion auf Gültigkeit zu überprüfen, da diese sowieso nicht mehr verändert werden kann.
-Da diese Informationen für Zeugen derzeit zirka zwei Drittel der Blockchain beanspruchen, könnte dadurch viel Speicherplatz gespart werden und das 1MB-Limit aufrecht erhalten werden.
+Da diese Informationen für Zeugen derzeit zirka zwei Drittel der Blockchain beanspruchen, könnte dadurch viel Speicherplatz gespart werden und das 1~MB-Limit aufrechterhalten werden.
 \Cf{rizzo}
 
 Doch es gibt auch Kritik an diesem Vorschlag:
