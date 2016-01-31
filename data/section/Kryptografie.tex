@@ -10,18 +10,18 @@ Hierzu werden hauptsächlich zwei kryptografische Prozesse exzessiv genutzt:
 \subsection{Asymmetrische Verschlüsselung}
 
 Bei traditionellen symmetrischen Verschlüsselungen, teilen sich Sender und Empfänger einen geheimen Schlüssel, der zum ver- und entschlüsseln verwendet wird.
-Beispielsweise möchte Alice eine Nachricht an Bob senden ohne das Eve ihren Inhalt mitbekommt, obwohl sie den gesammten Nachrichtenverkehr zwischen den beiden mitließt.
+Beispielsweise möchte Alice eine Nachricht an Bob senden ohne das Eve ihren Inhalt mitbekommt, obwohl sie den gesamten Nachrichtenverkehr zwischen den beiden mitliest.
 Wenn die beiden über einen gemeinsamen, Eve nicht bekannten Schlüssel verfügen, so kann Alice ihre Nachricht verschlüsseln, an Bob senden und dieser mit demselben Schlüssel entschlüsseln ohne das Eve den Inhalt erfährt.
 Doch wenn sie sich noch nicht über einen gemeinsamen Schlüssel verfügen, ist es schwer sich diesen gegenseitig zukommen zu lassen, ohne dass Eve davon erfährt.
 
-An dieser Stelle setzen \emph{asymetrische Verschlüsselungen} an.
-Unter diesen werden Verschlüsselungen verstanden, welche im gegensatz zu symetrischen Schlüsseln unterschiedliche Schlüssel zu Ver- und Entschlüsselung benötigen.
+An dieser Stelle setzen \emph{asymmetrische Verschlüsselungen} an.
+Unter diesen werden Verschlüsselungen verstanden, welche im Gegensatz zu symmetrischen Schlüsseln unterschiedliche Schlüssel zu Ver- und Entschlüsselung benötigen.
 Dies wird meist bewältigt, indem eine Gruppe definiert wird, in welchem das Inverse zu einem gegebenen Wert nicht trivial zu berechnen ist.
 
 Eine \emph{Gruppe} bezeichnet eine abgeschlossene Menge auf der eine assoziative Verknüpfung definiert ist.
 Außerdem muss es ein neutrales Element geben und jedes Element ein Inverses aufweisen.
 \Cf[182]{schmeh2013}
-Beispiele für solche Gruppen ist beispielsweise die Addition in den ganzen Zahlen, die Multiplikation in den reellen Zahlen, die Moduloaddition in einem beliebigen Restlklassenring, sowie die Modulomultiplikation in der Menge $\{ 1, \dotsc, p \mid p \in \mathbb{P}\}$.
+Beispiele für solche Gruppen ist beispielsweise die Addition in den ganzen Zahlen, die Multiplikation in den reellen Zahlen, die Moduloaddition in einem beliebigen Restklassenring, sowie die Modulomultiplikation in der Menge $\{ 1, \dotsc, p \mid p \in \mathbb{P}\}$.
 
 In den meisten Gruppen ist das Inverse trivial zu berechnen und es existiert eine brauchbare Umkehrfunktion.
 Betrachten wir beispielsweise eine Gruppe über $\mathbb{R}$ mit der Verknüpfung $y=a^x$.
