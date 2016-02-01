@@ -16,6 +16,12 @@ Da es keine zentrale Stelle gibt und das Guthaben jeder Adresse daher öffentlic
 \end{figure}
 
 Transaktionen sind wohl der wichtigste Bestandteil des Bitcoin-Netzwerks.
+Schon im White Paper zu Bitcoin werden Bitcoins als Kette von signierten Transaktionen definiert:
+
+\begin{longquote}[2]{nakamoto}
+We define an electronic coin as a chain of digital signatures. Each owner transfers the coin to the next by digitally signing a hash of the previous transaction and the public key of the next owner and adding these to the end of the coin. A payee can verify the signatures to verify the chain of ownership.
+\end{longquote}
+
 Denn anstatt einen Kontostand zu speichern und ihn bei jeder Transaktion zu verändern (was anfällig für Manipulation wäre), beziehen sich Transaktion auf vorhergegangene Transaktionen, damit die Herkunft und somit die Gültigkeit verifiziert werden.
 Um Bitcoin zu versendenden, muss man also eine vorhergegangene Transaktion referenzieren, durch welche man die Bitcoins erhalten hat, um zu Beweisen, dass man diese besitzt.
 Wie in Abbildung \ref{fig:transaction} dargestellt, kann eine Transaktion dabei aus mehreren Eingängen und mehreren Ausgängen bestehen.
