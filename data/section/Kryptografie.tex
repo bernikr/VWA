@@ -36,7 +36,7 @@ Daher ist auch das Inverse nicht diskret berechenbar.
 Um von der asymmetrischen Verschlüsselung Gebrauch zu machen, erstellt Alice Mithilfe einer Hilfsfunktion zwei Zahlen, welche über eine definierte Gruppe invers sind.
 Einen der Werte --~den privaten Schlüssel~-- behält Alice für sich und den anderen schickt sie mitsamt der definierten Gruppe an Bob.
 Hierbei ist es egal, ob auch andere Personen den Schlüssel erhalten, da dieser öffentlich ist.
-Nachdem Bob den öffentlichen Schlüssel von Alice erhalten hat, sind zwei Kryptographische Prozesse möglich:
+Nachdem Bob den öffentlichen Schlüssel von Alice erhalten hat, sind zwei Kryptografische Prozesse möglich:
 \begin{enumerate}
     \item Bob verschlüsselt eine Nachricht mit dem öffentlichen Schlüssel und sendet sie an Alice.
     Da nur Alice den privaten Schlüssel hat, kann Eve mit der Nachricht nichts anfangen.
@@ -64,7 +64,7 @@ Diese kann man benutzen, um festzustellen, ob die Nachricht verändert wurde.
 Es wird unterschieden zwischen kryptografischen und nicht-kryptografischen Hashfunktionen.
 Eine nicht-kryptografische Hashfunktion liefert eine Prüfsumme, deren Änderung bei Änderung der ursprünglichen Nachricht (auch Urbild genannt) vorhersehbar ist.
 So wäre die Quersumme eine einfache nicht-kryptografische Hashfunktion.
-Nicht-kryptographische Hashfunktionen findet man zum Beispiel als Prüfziffern in Kontonummern, ISBNs und Barcodes vor, wo sie ein irrtümliches Ändern der Nachricht (d.\,h. Nummer) verhindern sollen.
+Nicht-kryptografische Hashfunktionen findet man zum Beispiel als Prüfziffern in Kontonummern, ISBNs und Barcodes vor, wo sie ein irrtümliches Ändern der Nachricht (d.\,h. Nummer) verhindern sollen.
 Vertippt man sich zum Beispiel bei der Eingabe einer Kontonummer, so kann der Computer feststellen, dass die eingegebene Nummer nicht mit der gegebenen Nachricht übereinstimmt und diese als Fehlerhaft markieren.
 Hierbei ist bei einer Änderung des Urbilds vorhersehbar, wie sich die Prüfsumme ändern wird.
 Verringert man zum Beispiel eine Ziffer um 1, so wird auch die Quersumme um 1 weniger.
