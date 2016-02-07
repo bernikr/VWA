@@ -7,14 +7,6 @@ Da es keine zentrale Stelle gibt, müssen alle Kontobewegungen und Guthabensstä
 
 \subsection{Transaktionen}
 
-\begin{figure}
-    \begin{center}
-		\includegraphics{transaction}
-    	\caption{Transaktion aus Aus- und Eingängen \parencite[5]{nakamoto}}
-    	\label{fig:transaction}
-    \end{center}
-\end{figure}
-
 Transaktionen sind wohl der wichtigste Bestandteil des Bitcoin-Netzwerks.
 Schon im White Paper zu Bitcoin werden Bitcoins als Kette von signierten Transaktionen definiert:
 
@@ -26,6 +18,14 @@ Denn anstatt einen Kontostand zu speichern und ihn bei jeder Transaktion zu ver�
 Um Bitcoin zu versendenden, muss man also eine vorhergegangene Transaktion referenzieren, durch welche man die Bitcoins erhalten hat und anschließend die Transaktion signieren, um zu Beweisen, dass man jene besitzt.
 Abbildung \ref{fig:transactionchain} zeigt eine Darstellung einer so entstehenden Transaktionskette, in der Bitcoins von Besitzer 0 bis zu Besitzer 3 wandern.
 
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics{transactionchain}
+        \caption{Unverzweigte Transaktionskette \parencite[2]{nakamoto}}
+        \label{fig:transactionchain}
+    \end{center}
+\end{figure}
+
 Da man aber nicht immer den vollen Betrag einer vorherigen Transaktion ausgeben möchte, muss es die Möglichkeit geben nur einen Teil der Bitcoins einer vorherigen Transaktion weiterzuschicken.
 Ebenfalls sollte es möglich sein, zwei Transaktionen zu referenzieren und die Summe ihrer Bitcoins zu transferieren.
 Um das zu ermöglichen, kann eine Transaktion, wie in Abbildung \ref{fig:transaction} dargestellt, aus mehreren Eingängen und mehreren Ausgängen bestehen.
@@ -33,18 +33,18 @@ Ein Eingang referenziert dabei immer einen Ausgang einer vorherigen Transaktion,
 \footnote{Möchte man nur einen Teil der Bitcoins aus der alten Transaktion ausgeben, so muss es zwei Ausgänge geben, wobei einer einen Teil an eine andere Adresse sendet und der andere den Rest wider zurück an einen selbst.}
 Die Summe der Ausgänge ist dabei für gewöhnlich kleiner als die der Eingänge, da die Differenz als Transaktionsgebühr dient. (Siehe Abschnitt \ref{subsec:mining})
 
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics{transaction}
+        \caption{Transaktion aus Aus- und Eingängen \parencite[5]{nakamoto}}
+        \label{fig:transaction}
+    \end{center}
+\end{figure}
+
 Nach dem Signieren der Transaktion wird diese von dem Bitcoin-Client über das Internet an andere Instanzen der Bitcoin-Software gesendet, welche die Transaktion auf gültigkeit überprüft und danach wiederum weitersendet.
 So wird die Transaktion innerhalb kürzester Zeit mehrmals verifiziert und im gesamten Bitcoin-Netzwerk verteilt.
 
 \subsection{Adressen}
-
-\begin{figure}
-    \begin{center}
-        \includegraphics{transactionchain}
-    	\caption{Unverzweigte Transaktionskette \parencite[2]{nakamoto}}
-    	\label{fig:transactionchain}
-    \end{center}
-\end{figure}
 
 Zum Signieren und Verifizieren von Transaktionen wird ein asymetrisches Schlüsselpaar benötigt.
 Dadurch wird gewährleistet, dass nur autorisierte Personen die Ausgänge vergangener Transaktionen als Eingang in ihrer Transaktion verwenden können.
@@ -73,20 +73,20 @@ Um die Transaktion zu speichern werden alle Transaktionen, welche in einem besti
 Da jeder Block neben den Transaktionen auch eine Referenz in Form des Hashes auf den vorherigen Block beinhaltet, entsteht eine einzige lineare Kette von Blöcken -- \emph{Blockchain} genannt.
 Aufgrund der Linearität der Blockchain kann gewährleistet werden, dass jeder Transaktions-Ausgang nur einmal von einem Eingang aufgegriffen wird und somit sogenannten \emph{Double-Spending} (d.\,h. das zwei- oder mehrmalige Verwenden eines Ausganges in verschiedenen Transaktionen) verhindert wird.
 
-\subsubsection{Mining}
-\label{subsec:mining}
-
-Unter \emph{Mining} versteht man das Generieren von Blöcken.
-Da man möchte, dass Blöcke nur so langsam erschaffen werden, dass sich das Bitcoin-Netzwerk über einen gemeinsamen aktuellen Block einig ist, ist ein gewisser Aufwand mit der Erstellungen eines Blockes verbunden.
-Diese \emph{Proof-of-Work}-Mechanismen sorgen dafür, dass durchschnittlich nur alle 10 Minuten ein neuer Block erzeugt wird.
-
-\begin{figure}
+\begin{figure}[htb]
     \begin{center}
         \includegraphics{blockchain}
         \caption{Vereinfachte Darstellung der Blockchain \parencite[3]{nakamoto}}
         \label{fig:blockchain}
     \end{center}
 \end{figure}
+
+\subsubsection{Mining}
+\label{subsec:mining}
+
+Unter \emph{Mining} versteht man das Generieren von Blöcken.
+Da man möchte, dass Blöcke nur so langsam erschaffen werden, dass sich das Bitcoin-Netzwerk über einen gemeinsamen aktuellen Block einig ist, ist ein gewisser Aufwand mit der Erstellungen eines Blockes verbunden.
+Diese \emph{Proof-of-Work}-Mechanismen sorgen dafür, dass durchschnittlich nur alle 10 Minuten ein neuer Block erzeugt wird.
 
 Hierzu nimmt eine \emph{Mining-Software} die aus dem Bitcoin-Netzwerk empfangenen Transaktionen, welche noch nicht in der Blockchain vorhanden sind.
 Darauf erstellt sie einen Block aus diesen Transaktionen und dem Hash des vorherigen Blocks.
