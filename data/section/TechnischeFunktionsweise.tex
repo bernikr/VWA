@@ -2,7 +2,7 @@
 \label{sec:mechanics}
 
 Mithilfe dieser kryptografischen Mechanismen lässt sich ein Zahlungsnetzwerk aufbauen, in welchem --~im Gegensatz zu herkömmlichen Banken~-- keine zentrale vertrauenswürdige Stelle notwendig ist.
-Wie sich der Stand eines Kontos aus vorangegangen Transaktionen ergibt, so setzt sich auch der Kontostand einer Bitcoinadresse aus vorhergegangen Transaktionen zusammen.
+Wie sich der Stand eines Kontos aus vorangegangen Transaktionen ergibt, so setzt sich auch der Kontostand einer Bitcoin-Adresse aus vorhergegangen Transaktionen zusammen.
 Da es keine zentrale Stelle gibt, müssen alle Kontobewegungen und Guthabensstände öffentlich gemacht werden, um Betrug zu verhindern.
 
 \subsection{Transaktionen}
@@ -61,11 +61,11 @@ Diese öffentliche Nachvollziehbarkeit ist der Schlüssel in der Funktionsweise 
 Erst durch die aus der asymmetrischen Verschlüsselung folgenden Signaturen ist es möglich den Urheber einer Transaktion ohne eine zentrale Vertrauensstelle zu überprüfen.
 
 Aufgrund der Tatsache, dass man nur den öffentlichen Schlüssel einer anderen Person braucht, um ihr Bitcoins zukommen zu lassen, wird dieser Bitcoin-Adresse genannt.
-Die Bitcoinadresse ist eine 160~Bit lange Zahl, welcher eine 32~Bit lange Prüfsumme folgt.
+Die Bitcoin-Adresse ist eine 160~Bit lange Zahl, welcher eine 32~Bit lange Prüfsumme folgt.
 Um die Handhabung zu vereinfachen wird diese Adresse mithilfe von Base58%
 \footnote{\emph{Base58} ist analog zum Dezimal- oder Binärsystem ein Zahlensystem mit der Basis 58, das zur Darstellung der Zahlen neben Ziffern auch Buchstaben verwendet, wobei "`0"', "`O"', "`I"' und "`l"' aufgrund der Verwechsungsgefahr weggelassen werden.}
 in 27-34 alphanumerische Zeichen kodiert.%
-\footnote{Eine Bitcoinadresse sieht beispielsweise so aus: \texttt{1JQW4iRksV11pKSF4bnSXzeNMaqvc37Mq7}}
+\footnote{Eine Bitcoin-Adresse sieht beispielsweise so aus: \texttt{1JQW4iRksV11pKSF4bnSXzeNMaqvc37Mq7}}
 
 \subsection{Die Blockchain}
 
@@ -91,7 +91,8 @@ Diese \emph{Proof-of-Work}-Mechanismen sorgen dafür, dass durchschnittlich nur 
 Hierzu nimmt eine \emph{Mining-Software} die aus dem Bitcoin-Netzwerk empfangenen Transaktionen, welche noch nicht in der Blockchain vorhanden sind.
 Darauf erstellt sie einen Block aus diesen Transaktionen und dem Hash des vorherigen Blocks.
 (Siehe Abbildung \ref{fig:blockchain})
-Dann berechnet sie den Hashwert des Blockes und vergleicht ihn mit dem Ziel-Wert.
+Dann berechnet sie den Hashwert des Blockes und vergleicht ihn mit dem Zielwert.
+Bei dem Zielwert handelt es sich um eine einheitliche Variable die das Maximum der gültigen Hashwerte angibt.
 Ist der Hash kleiner als der Zielwert, handelt es sich um einen gültigen Block.
 Sollte der Hash größer sein, so gibt es einen 32-Bit großen Teil des Blockes (\emph{Nonce} genannt), welcher nach Belieben verändert werden kann, um einen entsprechenden Hash zu erhalten.
 Da sich der Hash scheinbar zufällig ändert, muss der Miner relativ viele Hashwerte berechnen, bis er einen gültigen findet.
@@ -100,7 +101,7 @@ Der Zielwert wird anhand einer Formel alle zwei Wochen angepasst, damit egal wie
 Um die Miner für die aufgewandte Rechenleistung und Stromkosten zu entschädigen, verdient er auf zwei verschiedene Arten Bitcoin:
 \begin{enumerate}
     \item Transaktionen beinhalten eine Transaktionsgebühr in Form einer Differenz zwischen Eingang und Ausgang.
-    Ein Miner darf diese Transaktionsgebühr aus allen in seinem Block inkludierten Transaktionen an seine eigene Bitcoinadresse senden.
+    Ein Miner darf diese Transaktionsgebühr aus allen in seinem Block inkludierten Transaktionen an seine eigene Bitcoin-Adresse senden.
     \item Um Bitcoins zu erschaffen und einen Anfang für Transaktionsketten zu bieten, beinhaltet jeder Block eine Transaktion die Bitcoins aus dem Nichts schafft.
     Diese Belohnung für das Mining betrug am Anfang 50 Bitcoins pro Block, wird aber alle 210000 Blöcke (ca. alle 4 Jahre) halbiert, so dass Bitcoin trotz dauerhafter Zufuhr auf ein Maximum von 21 Millionen Bitcoins limitiert ist.
 \end{enumerate}

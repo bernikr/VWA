@@ -3,7 +3,7 @@
 Da Bitcoin ohne zentrale Stelle auskommt, müssen die dahinterliegenden Prozesse trotz absoluter Transparenz ein hohes Maß an Sicherheit gewähren.
 Hierzu werden hauptsächlich zwei kryptografische Prozesse exzessiv genutzt:
 \begin{description}
-    \item[Asymmetrische Verschlüsselung] wird benötigt, um Transaktionen signieren zu können und somit um jemanden, der Bitcoins ausgeben möchte zu authentifizieren
+    \item[Asymmetrische Verschlüsselung] wird benötigt, um Transaktionen signieren zu können, also um zu beweisen, dass der Ersteller einer Transaktion tatsächlich über die ausgegebenen Bitcoin verfügt.
     \item[Hashfunktionen] sind ein wesentlicher Bestandteil der Blockchain, wie auch in Abschnitt \ref{sec:mechanics} erklärt.
 \end{description}
 
@@ -18,41 +18,57 @@ An dieser Stelle setzen \emph{asymmetrische Verschlüsselungen} an.
 Unter diesen werden Verschlüsselungen verstanden, welche im Gegensatz zu symmetrischen Schlüsseln unterschiedliche Schlüssel zu Ver- und Entschlüsselung benötigen.
 Dies wird meist bewältigt, indem eine Gruppe definiert wird, in welchem das Inverse zu einem gegebenen Wert nicht trivial zu berechnen ist.
 
-Eine \emph{Gruppe} bezeichnet eine Menge von Elementen auf der eine assoziative Verknüpfung definiert ist, welche je zwei Elementen ein drittes Element zuordnet.
-Außerdem muss es ein neutrales Element geben und jedes Element ein Inverses aufweisen.
+Eine \emph{Gruppe} $(G,*)$ bezeichnet eine Menge $G$ von Elementen auf der eine assoziative Verknüpfung $*$ definiert ist, welche je zwei Elementen ein drittes Element zuordnet.
+Außerdem muss es ein neutrales Element $e \in G$ geben, sodass für $\forall x \in G, \quad e*x=x$ gilt, und für alle Element $x \in G$ ein Inverses $x' \in G$ existiert, sodass $x*x'=e$ gilt.
 \Cf[182]{schmeh2013}
-Beispiele für solche Gruppen sind beispielsweise die Addition in den ganzen Zahlen, die Multiplikation in den reellen Zahlen, die Moduloaddition in einem beliebigen Restklassenring, sowie die Modulomultiplikation in der Menge $\{ 1, \dotsc, p \mid p \in \mathbb{P}\}$.
+Beispiele für solche Gruppen sind beispielsweise die Addition in den ganzen Zahlen $(\mathbb{Z}, +)$, die Multiplikation in den reellen Zahlen $(\mathbb{R}, \cdot)$, sowie die Moduloaddition%
+\footnote{Modulooperationen sind ähnlich den Operationen in $\mathbb{Z}$, wobei bloß Divisionsreste betrachtet werden.
+Zwei Zahlen heißen kongruent ($\equiv$) bezüglich einem Modul $m$, wenn sie bei der Division durch $m$ den selben Rest aufweisen.
+So gilt beispielsweise: $1 \equiv 3 \pmod{2}$ \\
+Die Moduloaddition ist also als $f(x,y) \equiv x+y \pmod{m}$ definiert, wobei $f$ nicht den Wert einer Zahl sondern eine Restklasse (Die Menge aller Zahlen mit dem selben Rest) annimmt.}
+in einem beliebigen Restklassenring $(\mathbb{Z}_n, +)$.
 
 In den meisten Gruppen ist das Inverse trivial zu berechnen und es existiert eine brauchbare Umkehrfunktion.
-Betrachten wir beispielsweise eine Gruppe über $\mathbb{R}$ mit der Verknüpfung $y=a^x$.
-Hier ist die Umkehrfunktion $x=\log_a y$ und das Inverse $x'=\frac{1}{x}$, sodass $a=(a^x)^{x'}$ gilt.
+Betrachten wir beispielsweise eine Gruppe über $\mathbb{R}$ mit der Verknüpfung $c = a \cdot b$.
+Hier sind die Umkehrfunktionen $a = \frac{c}{b}$ und $a = \frac{c}{a}$ und das Inverse $x'=\frac{1}{x}$.
 
-Anders sieht es mit der Moduloexponentialfunktion aus.
-Dabei handelt es sich analog zur Exponentialfunktion um die Funktion $y \equiv a^x$ in einer Menge an Restklassen.
-Hierbei ist die Umkehrfunktion --~der diskrete Logarithmus\footnote{Der \emph{diskrete Logarithmus} sucht eine \emph{ganze Zahl} $x$, für die die Gleichung $y \equiv a^x \pmod{m}$ bei gegebenem $y$, $a$ und $m$ gilt.}~-- für größere Werte mit heutigen Algorithmen nicht in absehbarer Zeit zu berechnen.
-Daher ist auch das Inverse nicht diskret berechenbar.
+Anders sieht es mit der Modulomultiplikation in der Menge $\{ 1, \dotsc, pq \mid p,q \in \mathbb{P}\}$ aus.
+Dabei handelt es sich analog zur Multiplikation um die Funktion $c \equiv a \cdot b \pmod{m}$ in einer Menge an Restklassen.
+Die Umkehrfunktion (das Dividieren) ist hierbei nicht möglich und das Inverse ist nur bei Kentnis von $\phi(m)$ zu berechnen.
+Die Eulersche Phi-Funktion $\phi(x)$ gibt die Anzahl der zu $x$ teilerfremden Zahlen an, die kleiner als $x$ sind.
+Diese Funktion ist nur mithilfe einer Primfaktorzerlegung berechenbar, welche wiederum für das Produkt zwei hoher Primzahlen nicht in absehbarer Zeit berechenbar ist.
+Wählt man also zwei hohe Primzahlen $p$ und $q$ und einen Schlüssel $x$ und mutipliziert die Primzahlen zu dem Modul $m$, ist das Inverse des Schlüssels nur berechenbar, wenn man die ursprünglichen Zahlen kennt.
+\Cf[166]{schmeh2007}
+
+Betrachtet man nun die Operation $b \equiv a^x \pmod{m}$.%
+\footnote{Das diese Operation durgeführt werden kann ist nicht immer gegeben. Für eine genaue Erklärung siehe \cite[157-160]{schmeh2007}.}
+Hierbei ist die Umkehrfunktion --~der diskrete Logarithmus%
+\footnote{Der \emph{diskrete Logarithmus} sucht eine \emph{ganze Zahl} $x$, für die die Gleichung $y \equiv a^x \pmod{m}$ bei gegebenem $y$, $a$ und $m$ gilt.}
+~-- für größere Werte mit heutigen Algorithmen nicht in absehbarer Zeit zu berechnen.
+Kennt man jedoch das Inverse von $x$ so lässt sich aufgrund der Beziehung $a \equiv (a^x)^{x'} \pmod{m}$ mithilfe von $x'$, $b$ und $m$ wieder $a$ ausrechnen.
 \Cf[184]{schmeh2013}
 
-Um von der asymmetrischen Verschlüsselung Gebrauch zu machen, erstellt Alice Mithilfe einer Hilfsfunktion zwei Zahlen, welche über eine definierte Gruppe invers sind.
-Einen der Werte --~den privaten Schlüssel~-- behält Alice für sich und den anderen schickt sie mitsamt der definierten Gruppe an Bob.
+Um von der asymmetrischen Verschlüsselung Gebrauch zu machen, wählt Alice zwei hohe Primzahlen und einen geheimen Schlüssel $g$ und berechnet das Inverse $o$ dazu.
+Danach berechnet Alice das Produkt $m$ der Primzahlen und verwirft diese.
+Den privaten Schlüssel behält Alice für sich und während sie das Inverse und das Produkt an Bob sendet.
 Hierbei ist es egal, ob auch andere Personen den Schlüssel erhalten, da dieser öffentlich ist.
 Nachdem Bob den öffentlichen Schlüssel von Alice erhalten hat, sind zwei Kryptografische Prozesse möglich:
 \begin{enumerate}
     \item Bob verschlüsselt eine Nachricht mit dem öffentlichen Schlüssel und sendet sie an Alice.
     Da nur Alice den privaten Schlüssel hat, kann Eve mit der Nachricht nichts anfangen.
     \item Alice verschlüsselt eine Nachricht (oder einen Hash davon) mit dem privaten Schlüssel.
+    Somit kann diese von jedem mit dem öffentlichen Schlüssel entschlüsselt werden.
     Dieser Prozess wird \emph{Signieren} genannt.
-    Bob, aber auch Eve, kann diese Nachricht nun mit dem öffentlichen Schlüssel entschlüsseln und lesen.
     Da aber nur Alice den privaten Schlüssel innehat, lässt sich somit die Authentizität der Nachricht verifizieren.
     So kann Bob sich sicher sein, dass diese nicht auf dem Weg verändert wurde und sicher von Alice stammt.
 \end{enumerate}
 
-Die Prozesse der Ver- und Entschlüsselung sind (bis auf den verwendeten Schlüssel) identisch und bestehen nur aus der Anwendung der in der Gruppe definierten Verknüpfung mit dem Schlüssel.
-Im Beispiel mit dem Moduloexponential erfolgt die Verschlüsselung eines Klartextes $K$ mit dem öffentlichen Schlüssel $o$ über den Modul $m$ mithilfe von $G \equiv K^o \pmod{m}$.
+Die Prozesse der Ver- und Entschlüsselung sind (bis auf den verwendeten Schlüssel) identisch aus einer Anwendung der Exponentialfunktion.
+Die Verschlüsselung eines Klartextes $K$ zu einem Geheimtext $G$ erfolgt mit dem öffentlichen Schlüssel $o$ über den Modul $m$ mithilfe von $G \equiv K^o \pmod{m}$.
 Die Entschlüsselung erfolgt analog dazu mit dem geheimen Schlüssel $g$: $K \equiv G^g \pmod{m}$.
 
 Die Anwendung bei Bitcoin erfolgt dabei so, dass jeder, der Bitcoins verwenden möchte ein Schlüsselpaar erstellt.
-In diesem Kontext wird der öffentliche Schlüssel Bitcoinadresse genannt.
+In diesem Kontext wird der öffentliche Schlüssel Bitcoin-Adresse genannt.
 Möchte man eine Transaktion durchführen, wird diese mit dem privaten Schlüssel signiert.
 Daher ist von jedem überprüfbar, ob eine Transaktion auch wirklich von der berechtigten Person durchgeführt wurde.
 
@@ -62,11 +78,11 @@ Eine Hashfunktion bildet eine Prüfsumme aus einer Nachricht.
 Diese kann man benutzen, um festzustellen, ob die Nachricht verändert wurde.
 \Cf[226]{schmeh2013}
 Es wird unterschieden zwischen kryptografischen und nicht-kryptografischen Hashfunktionen.
-Eine nicht-kryptografische Hashfunktion liefert eine Prüfsumme, deren Änderung bei Änderung der ursprünglichen Nachricht (auch Urbild genannt) vorhersehbar ist.
+Eine nicht-kryptografische Hashfunktion liefert eine Prüfsumme (Hash) einer Nachricht (auch Urbild genannt), deren Änderung bei Änderung des Urbildes vorhersehbar ist.
 So wäre die Quersumme eine einfache nicht-kryptografische Hashfunktion.
 Nicht-kryptografische Hashfunktionen findet man zum Beispiel als Prüfziffern in Kontonummern, ISBNs und Barcodes vor, wo sie ein irrtümliches Ändern der Nachricht (d.\,h. Nummer) verhindern sollen.
-Vertippt man sich zum Beispiel bei der Eingabe einer Kontonummer, so kann der Computer feststellen, dass die eingegebene Nummer nicht mit der gegebenen Nachricht übereinstimmt und diese als Fehlerhaft markieren.
-Hierbei ist bei einer Änderung des Urbilds vorhersehbar, wie sich die Prüfsumme ändern wird.
+Vertippt man sich zum Beispiel bei der Eingabe einer Kontonummer, so kann der Computer feststellen, dass die eingegebene Nummer nicht zur angegebenen Prüfsumme passt und diese als Fehlerhaft markieren.
+Hierbei ist bei einer Änderung des Urbilds vorhersehbar, wie sich der Hash ändern wird.
 Verringert man zum Beispiel eine Ziffer um 1, so wird auch die Quersumme um 1 weniger.
 Folglich lässt sich zu einer gegebenen Zahl ein Urbild finden, das jene als Prüfsumme hat.
 \Cfmulti[35-36]{schneier}[226]{schmeh2013}
@@ -74,6 +90,8 @@ Folglich lässt sich zu einer gegebenen Zahl ein Urbild finden, das jene als Pr�
 \emph{Kryptografische Hashfunktionen} zeichnen sich dadurch aus, dass man bei gegebenen Hashwert nicht einfach ein Urbild rekonstruieren kann, das jenen erfüllt.
 Ebenso soll es mit realistischem Aufwand nicht möglich sein, zwei Urbilder zu finden, die denselben Hashwert haben.
 \Cf[289-290]{wobst}
-Solche Einweg-Hashes erlauben es zum Beispiel Prüfziffern zu erstellen, die nicht nur gegen zufällige Veränderungen Schutz bieten, sondern auch gegenüber böswilligen Angriffen.
+Solche Einweg-Hashes%
+\footnote{\emph{Einweg} bezieht sich in diesem Kontext auf darauf, dass nur die Berechnung von Urbild zu Hash möglich ist, man aus dem Hash jedoch keinerlei Informationen über das Urbild schließen kann.}
+erlauben es zum Beispiel Prüfziffern zu erstellen, die nicht nur gegen zufällige Veränderungen Schutz bieten, sondern auch gegenüber böswilligen Angriffen.
 Übermittelt man jemanden zum Beispiel eine ausführbare Datei und teilt ihm auf einem sicheren Weg den Hash der Datei mit, kann sich der Empfänger --~sofern die Hashwerte übereinstimmen~-- sicher sein, dass die Datei unverändert ist.
 Denn wenn ein Angreifer zum Beispiel versucht einen Virus in die Datei einzuschleusen, wird sich der Hashwert verändern, egal wie sehr sich der Angreifer bemüht.

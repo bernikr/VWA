@@ -1,5 +1,4 @@
-Auch wenn Bitcoin vom Konzept wie eine ideale Währung wirken kann, gibt es dennoch einige Probleme, die es davon abhalten weiter verbreitet zu sein.
-Denn Bitcoin ist bei weitem noch nicht reif genug, um es mit dem Euro oder dem Dollar auf eine Stufe zu stellen, müssen doch erst einige konzeptuelle und technische Probleme aus dem Weg geräumt werden.
+Auch wenn Bitcoin vom Konzept wie eine ideale Währung wirken kann, gibt es dennoch einige konzeptuelle und technische Probleme, die es davon abhalten weiter verbreitet zu sein.
 
 \section{Instabilität}
 
@@ -39,7 +38,7 @@ Man kann nur darauf hoffen, dass die in Abschnitt \ref{subsec:mining} beschriebe
 \section{Block-Size-Debatte}
 \label{sec:blocksize}
 
-Doch nicht alle Probleme sind vom Konzept so grundlegenden und scheinbar unlösbar.
+Doch nicht alle Probleme sind vom Konzept so grundlegend und scheinbar unlösbar.
 2010 wurde die Größe eines Blockes von 36~MB auf 1~MB herabgesetzt, um zu vermeiden, das Miner Spam-Blöcke mit mehreren Megabyte an sinnlosem Inhalt erstellen und diese die Blockchain unnötig vergrößern.
 Damals war das auch kein Problem, da sich die durchschnittliche Größe eines Blockes im Bereich von wenigen Kilobyte befand.
 Anfang 2015 stellte man allerdings fest, dass aufgrund der immer weiteren Verbreitung von Bitcoin die Anzahl der Transaktionen und somit auch die Größe der Blöcke rasant anstieg und drohte an die 1~MB-Grenze zu gelangen.
@@ -47,10 +46,10 @@ Anfang 2015 stellte man allerdings fest, dass aufgrund der immer weiteren Verbre
 
 Die Folgen des Erreichens wären nach einigen Meinungen fatal.
 Da nicht mehr alle Transaktionen in die Blöcke aufgenommen werden können, kommt es zu einem Wettbewerb bei der Transaktionsgebühr.
-Nur noch Transaktionen welche den Minern die meisten Bitcoins überlassen werden bestätigt, andere Transaktionen mit zu wenige Gebühr befinden sich dann für immer im Rückstau der Miner.
+Nur noch Transaktionen welche den Minern die meisten Bitcoins überlassen werden bestätigt, andere Transaktionen mit zu wenig Gebühr befinden sich dann für immer im Rückstau der Miner.
 Während viele dabei das Ende von Bitcoin befürchten, sind andere der Meinung, dass diese Form des freien Marktes die Lösung der Debatte sei.
 
-Die Vielzahl der anderen Lösungsvorschläge haben den Punkt, das Limit anzuheben gemein, unterscheiden sich doch in Details wie, der Höhe des Limits oder den Verlauf über längere Zeit.
+Die Vielzahl der anderen Lösungsvorschläge haben den Punkt das Limit anzuheben gemein, unterscheiden sich doch in Details wie der Höhe des Limits oder des Verlaufes über längere Zeit.
 Unter anderem schlägt Gavin Anderson, der ehemalige leitende Entwickler des Bitcoin Projektes vor, das Limit sofort auf 8~MB anzuheben und danach alle zwei Jahre eine Vergrößerung um 40\% durchzuführen.
 Andere Vorschläge sind zum Beispiel die sofortige Anhebung auf 2~MB und danach eine jährliche Erhöhung von 17,7\%.
 \Cf{caffyn}
@@ -71,7 +70,7 @@ Da diese Informationen für Zeugen derzeit zirka zwei Drittel der Blockchain bea
 
 Doch es gibt auch Kritik an diesem Vorschlag:
 Aufgrund der Bedingung rückwärtskompatibel zu sein, muss die Signatur in einem bereits bestehenden Feld der Transaktion (im konkreten Fall das \emph{Coinbase}-Feld) eingeschlossen werden, welches dadurch zweckentfremdet wird.
-Da Miner dieses Feld unter anderem dafür verwenden über Änderungen in der Bitcoin Software abzustimmen, gibt es Befürchtungen, dass durch \emph{Segregated Witness} die Mining-Software verkomplizieren, da dieses Feld nun abhängig vom Rest der Transaktionen ist.
+Da Miner dieses Feld unter anderem dafür verwenden, über Änderungen in der Bitcoin Software abzustimmen, gibt es Befürchtungen, dass sich durch \emph{Segregated Witness} die Mining-Software verkompliziert, da dieses Feld nun abhängig vom Rest der Transaktionen ist.
 \Cf{rizzo}
 
 Letztendlich ist die \emph{Block-Size-Debatte} noch lange nicht abgeschlossen, doch es gibt Hoffnung zu einem Ende zu kommen, wie auch Young in seinem Artikel auf \url{newsbtc.com} im Jänner 2016 darlegt:
