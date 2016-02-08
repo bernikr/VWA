@@ -54,10 +54,10 @@ Anschließend bildet er den Hashwert der Transaktion und signiert diesen mit sei
 Somit ist von jedem nachvollziehbar, dass es sich beim Ersteller der Transaktion um den Inhaber der Bitcoins handelt, indem man die Signatur mit dem öffentlichen Schlüssel aus der vorhergegangen Transaktion überprüft.
 
 In Abblidung \ref{fig:transactionchain} werden diese Signaturen schematisch dargestellt.
-Betrachtet man die mittlere Transaktion, in welcher Besitzer 1 seine Bitcoins an Besitzer 2 weitergibt, sieht man den Aufbau der Transaktions bestehnd aus dem öffentlichen Schlüssel des Empfängers, einem Hash aus diesem und der vorhergegangen Transaktion sowie der Signatur des Besitzers 1.
+Betrachtet man die mittlere Transaktion, in welcher Besitzer 1 seine Bitcoins an Besitzer 2 weitergibt, sieht man den Aufbau der Transaktions bestehend aus dem öffentlichen Schlüssel des Empfängers, einem Hash aus diesem und der vorhergegangen Transaktion sowie der Signatur des Besitzers 1.
 Diese Transaktion kann nun von jedem überprüft werden, indem er die Signatur mit dem öffentlichen Schlüssel aus der vorhergegangenen Transaktion verifiziert.
 
-Diese öffentliche Nachvollziehbarkeit ist der Schlüssel in der Funktionsweise von Bitcoin.
+Diese öffentliche Nachvollziehbarkeit ist die Grundlage der Funktionsweise von Bitcoin.
 Erst durch die aus der asymmetrischen Verschlüsselung folgenden Signaturen ist es möglich den Urheber einer Transaktion ohne eine zentrale Vertrauensstelle zu überprüfen.
 
 Aufgrund der Tatsache, dass man nur den öffentlichen Schlüssel einer anderen Person braucht, um ihr Bitcoins zukommen zu lassen, wird dieser Bitcoin-Adresse genannt.
@@ -69,7 +69,7 @@ in 27-34 alphanumerische Zeichen kodiert.%
 
 \subsection{Die Blockchain}
 
-Um die Transaktion zu speichern werden alle Transaktionen, welche in einem bestimmten Zeitinterval stattfinden, in sogenannte \emph{Blocks} zusammengefasst.
+Um die Transaktion zu speichern werden alle Transaktionen, welche weltweit in einem bestimmten Zeitinterval stattfinden, in sogenannte \emph{Blocks} zusammengefasst.
 Da jeder Block neben den Transaktionen auch eine Referenz in Form des Hashes auf den vorherigen Block beinhaltet, entsteht eine einzige lineare Kette von Blöcken -- \emph{Blockchain} genannt.
 Aufgrund der Linearität der Blockchain kann gewährleistet werden, dass jeder Transaktions-Ausgang nur einmal von einem Eingang aufgegriffen wird und somit sogenannten \emph{Double-Spending} (d.\,h. das zwei- oder mehrmalige Verwenden eines Ausganges in verschiedenen Transaktionen) verhindert wird.
 

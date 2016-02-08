@@ -18,6 +18,8 @@ An dieser Stelle setzen \emph{asymmetrische Verschlüsselungen} an.
 Unter diesen werden Verschlüsselungen verstanden, welche im Gegensatz zu symmetrischen Schlüsseln unterschiedliche Schlüssel zu Ver- und Entschlüsselung benötigen.
 Dies wird meist bewältigt, indem eine Gruppe definiert wird, in welchem das Inverse zu einem gegebenen Wert nicht trivial zu berechnen ist.
 
+\subsubsection{Mathematische Grundlagen}
+
 Eine \emph{Gruppe} $(G,*)$ bezeichnet eine Menge $G$ von Elementen auf der eine assoziative Verknüpfung $*$ definiert ist, welche je zwei Elementen ein drittes Element zuordnet.
 Außerdem muss es ein neutrales Element $e \in G$ geben, sodass für $\forall x \in G, \quad e*x=x$ gilt, und für alle Element $x \in G$ ein Inverses $x' \in G$ existiert, sodass $x*x'=e$ gilt.
 \Cf[158]{schmeh2007}
@@ -30,23 +32,25 @@ in einem beliebigen Restklassenring $(\mathbb{Z}_n, +)$.
 
 In den meisten Gruppen ist das Inverse trivial zu berechnen und es existiert eine brauchbare Umkehrfunktion.
 Betrachten wir beispielsweise eine Gruppe über $\mathbb{R}$ mit der Verknüpfung $c = a \cdot b$.
-Hier sind die Umkehrfunktionen $a = \frac{c}{b}$ und $b = \frac{c}{a}$ und das Inverse $x'=\frac{1}{x}$.
+Hier sind die Umkehrfunktionen $a = \frac{c}{b}$ und $b = \frac{c}{a}$ und das Inverse $x'=\frac{1}{x}$, weil $x \cdot \frac{1}{x} = 1$ und $1$ das neutrale Element bezüglich der Multiplikation ist.
 
 Anders sieht es mit der Modulomultiplikation in der Menge $\{ 1, \dotsc, pq \mid p,q \in \mathbb{P}\}$ aus.
 Dabei handelt es sich analog zur Multiplikation um die Funktion $c \equiv a \cdot b \pmod{m}$ in einer Menge an Restklassen.
 Die Umkehrfunktion (das Dividieren) ist hierbei nicht möglich und das Inverse ist nur bei Kentnis von $\phi(m)$ zu berechnen.
 Die Eulersche Phi-Funktion $\phi(x)$ gibt die Anzahl der zu $x$ teilerfremden Zahlen an, die kleiner als $x$ sind.
-Diese Funktion ist nur mithilfe einer Primfaktorzerlegung berechenbar, welche wiederum für das Produkt zwei hoher Primzahlen nicht in absehbarer Zeit berechenbar ist.
+Diese Funktion ist nur mithilfe einer Primfaktorzerlegung berechenbar, welche wiederum für das Produkt zweier hoher Primzahlen nicht in absehbarer Zeit berechenbar ist.
 Wählt man also zwei hohe Primzahlen $p$ und $q$ und einen Schlüssel $x$ und mutipliziert die Primzahlen zu dem Modul $m$, ist das Inverse des Schlüssels nur berechenbar, wenn man die ursprünglichen Zahlen kennt.
 \Cf[166]{schmeh2007}
 
 Betrachtet man nun die Operation $b \equiv a^x \pmod{m}$.%
 \footnote{Das diese Operation durgeführt werden kann ist nicht immer gegeben. Für eine genaue Erklärung siehe \cite[157-160]{schmeh2007}.}
 Hierbei ist die Umkehrfunktion --~der diskrete Logarithmus%
-\footnote{Der \emph{diskrete Logarithmus} sucht eine \emph{ganze Zahl} $x$, für die die Gleichung $y \equiv a^x \pmod{m}$ bei gegebenem $y$, $a$ und $m$ gilt.}
+\footnote{Der \emph{diskrete} Logarithmus sucht eine \emph{ganze Zahl} $x$, für die die Gleichung $y \equiv a^x \pmod{m}$ bei gegebenem $y$, $a$ und $m$ gilt.}
 ~-- für größere Werte mit heutigen Algorithmen nicht in absehbarer Zeit zu berechnen.
 Kennt man jedoch das Inverse von $x$ so lässt sich aufgrund der Beziehung $a \equiv (a^x)^{x'} \pmod{m}$ mithilfe von $x'$, $b$ und $m$ wieder $a$ ausrechnen.
 \Cf[160]{schmeh2007}
+
+\subsubsection{Anwendung der asymetrischen Verschlüsselung}
 
 Um von der asymmetrischen Verschlüsselung Gebrauch zu machen, wählt Alice zwei hohe Primzahlen und einen geheimen Schlüssel $g$ und berechnet das Inverse $o$ dazu.
 Danach berechnet Alice das Produkt $m$ der Primzahlen und verwirft diese.
@@ -77,7 +81,7 @@ Daher ist von jedem überprüfbar, ob eine Transaktion auch wirklich von der ber
 Eine Hashfunktion bildet eine Prüfsumme aus einer Nachricht.
 Diese kann man benutzen, um festzustellen, ob die Nachricht verändert wurde.
 \Cf[200]{schmeh2007}
-Es wird unterschieden zwischen kryptografischen und nicht-kryptografischen Hashfunktionen.
+Es wird unterschieden zwischen kryptografischen und nicht"=kryptografischen Hashfunktionen.
 Eine nicht-kryptografische Hashfunktion liefert eine Prüfsumme (Hash) einer Nachricht (auch Urbild genannt), deren Änderung bei Änderung des Urbildes vorhersehbar ist.
 So wäre die Quersumme eine einfache nicht-kryptografische Hashfunktion.
 Nicht-kryptografische Hashfunktionen findet man zum Beispiel als Prüfziffern in Kontonummern, ISBNs und Barcodes vor, wo sie ein irrtümliches Ändern der Nachricht (d.\,h. Nummer) verhindern sollen.
@@ -91,7 +95,7 @@ Folglich lässt sich zu einer gegebenen Zahl ein Urbild finden, das jene als Pr�
 Ebenso soll es mit realistischem Aufwand nicht möglich sein, zwei Urbilder zu finden, die denselben Hashwert haben.
 \Cf[289-290]{wobst}
 Solche Einweg-Hashes%
-\footnote{\emph{Einweg} bezieht sich in diesem Kontext auf darauf, dass nur die Berechnung von Urbild zu Hash möglich ist, man aus dem Hash jedoch keinerlei Informationen über das Urbild schließen kann.}
+\footnote{\emph{Einweg} bezieht sich in diesem Kontext darauf, dass nur die Berechnung von Urbild zu Hash möglich ist, man aus dem Hash jedoch keinerlei Informationen über das Urbild schließen kann.}
 erlauben es zum Beispiel Prüfziffern zu erstellen, die nicht nur gegen zufällige Veränderungen Schutz bieten, sondern auch gegenüber böswilligen Angriffen.
 Übermittelt man jemanden zum Beispiel eine ausführbare Datei und teilt ihm auf einem sicheren Weg den Hash der Datei mit, kann sich der Empfänger --~sofern die Hashwerte übereinstimmen~-- sicher sein, dass die Datei unverändert ist.
 Denn wenn ein Angreifer zum Beispiel versucht einen Virus in die Datei einzuschleusen, wird sich der Hashwert verändern, egal wie sehr sich der Angreifer bemüht.
