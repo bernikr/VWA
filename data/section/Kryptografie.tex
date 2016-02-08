@@ -20,7 +20,7 @@ Dies wird meist bewältigt, indem eine Gruppe definiert wird, in welchem das Inv
 
 Eine \emph{Gruppe} $(G,*)$ bezeichnet eine Menge $G$ von Elementen auf der eine assoziative Verknüpfung $*$ definiert ist, welche je zwei Elementen ein drittes Element zuordnet.
 Außerdem muss es ein neutrales Element $e \in G$ geben, sodass für $\forall x \in G, \quad e*x=x$ gilt, und für alle Element $x \in G$ ein Inverses $x' \in G$ existiert, sodass $x*x'=e$ gilt.
-\Cf[182]{schmeh2013}
+\Cf[158]{schmeh2007}
 Beispiele für solche Gruppen sind beispielsweise die Addition in den ganzen Zahlen $(\mathbb{Z}, +)$, die Multiplikation in den reellen Zahlen $(\mathbb{R}, \cdot)$, sowie die Moduloaddition%
 \footnote{Modulooperationen sind ähnlich den Operationen in $\mathbb{Z}$, wobei bloß Divisionsreste betrachtet werden.
 Zwei Zahlen heißen kongruent ($\equiv$) bezüglich einem Modul $m$, wenn sie bei der Division durch $m$ den selben Rest aufweisen.
@@ -30,7 +30,7 @@ in einem beliebigen Restklassenring $(\mathbb{Z}_n, +)$.
 
 In den meisten Gruppen ist das Inverse trivial zu berechnen und es existiert eine brauchbare Umkehrfunktion.
 Betrachten wir beispielsweise eine Gruppe über $\mathbb{R}$ mit der Verknüpfung $c = a \cdot b$.
-Hier sind die Umkehrfunktionen $a = \frac{c}{b}$ und $a = \frac{c}{a}$ und das Inverse $x'=\frac{1}{x}$.
+Hier sind die Umkehrfunktionen $a = \frac{c}{b}$ und $b = \frac{c}{a}$ und das Inverse $x'=\frac{1}{x}$.
 
 Anders sieht es mit der Modulomultiplikation in der Menge $\{ 1, \dotsc, pq \mid p,q \in \mathbb{P}\}$ aus.
 Dabei handelt es sich analog zur Multiplikation um die Funktion $c \equiv a \cdot b \pmod{m}$ in einer Menge an Restklassen.
@@ -46,7 +46,7 @@ Hierbei ist die Umkehrfunktion --~der diskrete Logarithmus%
 \footnote{Der \emph{diskrete Logarithmus} sucht eine \emph{ganze Zahl} $x$, für die die Gleichung $y \equiv a^x \pmod{m}$ bei gegebenem $y$, $a$ und $m$ gilt.}
 ~-- für größere Werte mit heutigen Algorithmen nicht in absehbarer Zeit zu berechnen.
 Kennt man jedoch das Inverse von $x$ so lässt sich aufgrund der Beziehung $a \equiv (a^x)^{x'} \pmod{m}$ mithilfe von $x'$, $b$ und $m$ wieder $a$ ausrechnen.
-\Cf[184]{schmeh2013}
+\Cf[160]{schmeh2007}
 
 Um von der asymmetrischen Verschlüsselung Gebrauch zu machen, wählt Alice zwei hohe Primzahlen und einen geheimen Schlüssel $g$ und berechnet das Inverse $o$ dazu.
 Danach berechnet Alice das Produkt $m$ der Primzahlen und verwirft diese.
@@ -76,7 +76,7 @@ Daher ist von jedem überprüfbar, ob eine Transaktion auch wirklich von der ber
 
 Eine Hashfunktion bildet eine Prüfsumme aus einer Nachricht.
 Diese kann man benutzen, um festzustellen, ob die Nachricht verändert wurde.
-\Cf[226]{schmeh2013}
+\Cf[200]{schmeh2007}
 Es wird unterschieden zwischen kryptografischen und nicht-kryptografischen Hashfunktionen.
 Eine nicht-kryptografische Hashfunktion liefert eine Prüfsumme (Hash) einer Nachricht (auch Urbild genannt), deren Änderung bei Änderung des Urbildes vorhersehbar ist.
 So wäre die Quersumme eine einfache nicht-kryptografische Hashfunktion.
@@ -85,7 +85,7 @@ Vertippt man sich zum Beispiel bei der Eingabe einer Kontonummer, so kann der Co
 Hierbei ist bei einer Änderung des Urbilds vorhersehbar, wie sich der Hash ändern wird.
 Verringert man zum Beispiel eine Ziffer um 1, so wird auch die Quersumme um 1 weniger.
 Folglich lässt sich zu einer gegebenen Zahl ein Urbild finden, das jene als Prüfsumme hat.
-\Cfmulti[35-36]{schneier}[226]{schmeh2013}
+\Cfmulti[35-36]{schneier}[200-201]{schmeh2007}
 
 \emph{Kryptografische Hashfunktionen} zeichnen sich dadurch aus, dass man bei gegebenen Hashwert nicht einfach ein Urbild rekonstruieren kann, das jenen erfüllt.
 Ebenso soll es mit realistischem Aufwand nicht möglich sein, zwei Urbilder zu finden, die denselben Hashwert haben.
