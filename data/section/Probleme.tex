@@ -2,8 +2,10 @@ Auch wenn Bitcoin vom Konzept wie eine ideale Währung wirken kann, gibt es denn
 
 \subsection{Instabilität}
 
-Wie schon in Abschnitt \ref{sec:speculation} erwähnt gibt es einen Teufelskreis der Instabilität.
-Damit Bitcoin als wirkliche Währung verwendet werden kann und nicht nur als Zahlungsmittel (Der Unterschied besteht darin, dass Shops die Preise derzeit in Euro oder Dollar anschreiben und nach dem aktuellen Bitcoinkurs umrechnen) muss dieser Kreis durchbrochen werden.
+Wie schon in Abschnitt \ref{sec:speculation} erwähnt leidet Bitcoin an einem Instabilitätsproblem, da Instabilität Spekulanten anlockt und durch Spekulation noch verstärkt wird.
+Damit Bitcoin als wirkliche Währung verwendet werden kann und nicht nur als Zahlungsmittel,%
+\footnote{Der Unterschied besteht darin, dass Shops die Preise derzeit in Euro oder Dollar anschreiben und nach dem aktuellen Bitcoinkurs umrechnen, bevor man zur Zahlung schreitet, anstatt die Preise direkt in Bitcoin anzugeben.}
+muss dieser Kreis durchbrochen werden.
 Bitcoin funktioniert derzeit zwar sehr gut als dezentrales Zahlungsmittel und als Geldanlage, doch kaum jemand würde auf die Idee kommen, nur noch Bitcoin zu verwenden und herkömmlichen Währungen den Rücken zuzukehren.
 
 \subsection{Praktikabilität im Alltag}
@@ -63,7 +65,7 @@ Die Zustimmung der Miner zu bekommen ist jedoch auch schwierig, sind doch mehr a
 
 Der letze große Vorschlag in der Debatte wird \emph{Segregated Witness} genannt.
 Im Gegensatz zu den anderen Vorschlägen, bei welchen es sich um \emph{Hard-Forks} handelt (d.\,h. die neue Version beinhaltet nicht rückwärtskompatible Änderung, wodurch Bitcoin in eine neue und eine alte Version aufgespalten werden) ist \emph{Segrageted Witness} ein \emph{Soft-Fork}, bei welchem alte Bitcoin-Clients weiterhin verwendbar sind und nur die Miner auf die neueste Version updaten müssen.
-\emph{Segrageted Witness} schlägt vor, die eigentlich Transaktion ("`Wer schickt wie viele Bitcoins an wen?"') von dem Teil zu trennen der nur für Zeugen von Relevanz ist (v.a. Signatur) und diesen Teil nur solange zu speichern, solange er von Relevanz ist und ihn daher nicht in die Blockchain aufnehmen.
+\emph{Segrageted Witness} schlägt vor, die eigentlich Transaktion (Inputs, Outputs und Beträge) von dem Teil zu trennen der nur für Zeugen von Relevanz ist (v.a. Signatur) und diesen Teil nur solange zu speichern, solange er von Relevanz ist und ihn daher nicht in die Blockchain aufnehmen.
 Denn sobald eine neue Transaktion auf eine alte aufbaut, ist es nicht mehr nötig, die alte Transaktion auf Gültigkeit zu überprüfen, da diese sowieso nicht mehr verändert werden kann.
 Da diese Informationen für Zeugen derzeit zirka zwei Drittel der Blockchain beanspruchen, könnte dadurch viel Speicherplatz gespart werden und das 1~MB-Limit aufrechterhalten werden.
 \Cf{rizzo}

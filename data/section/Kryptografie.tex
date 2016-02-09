@@ -1,41 +1,42 @@
 \subsection{Kryptografische Prozesse}
 
-Da Bitcoin ohne zentrale Stelle auskommt, müssen die dahinterliegenden Prozesse trotz absoluter Transparenz ein hohes Maß an Sicherheit gewähren.
+Da Bitcoin ohne vertrauenswürdige Stellen auskommt, müssen die dahinterliegenden Prozesse trotz absoluter Transparenz ein hohes Maß an Sicherheit gewähren.
 Hierzu werden hauptsächlich zwei kryptografische Prozesse exzessiv genutzt:
 \begin{description}
     \item[Asymmetrische Verschlüsselung] wird benötigt, um Transaktionen signieren zu können, also um zu beweisen, dass der Ersteller einer Transaktion tatsächlich über die ausgegebenen Bitcoin verfügt.
-    \item[Hashfunktionen] sind ein wesentlicher Bestandteil der Blockchain, wie auch in Abschnitt \ref{sec:mechanics} erklärt.
+    \item[Hashfunktionen] dienen dazu, vorhergehende Daten eindeutig zu referenzieren.
 \end{description}
 
 \subsubsection{Asymmetrische Verschlüsselung}
 
-Bei traditionellen symmetrischen Verschlüsselungen, teilen sich Sender und Empfänger einen geheimen Schlüssel, der zum ver- und entschlüsseln verwendet wird.
+Bei traditionellen symmetrischen Verschlüsselungen, teilen sich Sender und Empfänger einen geheimen Schlüssel, der zum Ver- und Entschlüsseln verwendet wird.
 Beispielsweise möchte Alice eine Nachricht an Bob senden ohne das Eve ihren Inhalt mitbekommt, obwohl sie den gesamten Nachrichtenverkehr zwischen den beiden mitliest.
 Wenn die beiden über einen gemeinsamen, Eve nicht bekannten Schlüssel verfügen, kann Alice ihre Nachricht verschlüsseln, an Bob senden und dieser kann diese mit demselben Schlüssel entschlüsseln ohne das Eve den Inhalt erfährt.
 Doch wenn sie sich noch nicht über einen gemeinsamen Schlüssel geeinigt haben, ist es schwer sich diesen gegenseitig zukommen zu lassen, ohne dass Eve davon erfährt.
 
 An dieser Stelle setzen \emph{asymmetrische Verschlüsselungen} an.
-Unter diesen werden Verschlüsselungen verstanden, welche im Gegensatz zu symmetrischen Schlüsseln unterschiedliche Schlüssel zu Ver- und Entschlüsselung benötigen.
-Dies wird meist bewältigt, indem eine Gruppe definiert wird, in welchem das Inverse zu einem gegebenen Wert nicht trivial zu berechnen ist.
+Unter diesen werden Verschlüsselungen verstanden, welche im Gegensatz zu symmetrischen Schlüsseln unterschiedliche Schlüssel zur Ver- und Entschlüsselung benötigen.
+Dies wird meist bewältigt, indem eine Gruppe definiert wird, in welcher das Inverse zu einem gegebenen Wert nicht trivial zu berechnen ist.
 
 \paragraph{Mathematische Grundlagen}
 
 Eine \emph{Gruppe} $(G,*)$ bezeichnet eine Menge $G$ von Elementen auf der eine assoziative Verknüpfung $*$ definiert ist, welche je zwei Elementen ein drittes Element zuordnet.
 Außerdem muss es ein neutrales Element $e \in G$ geben, sodass für $\forall x \in G, \quad e*x=x$ gilt, und für alle Element $x \in G$ ein Inverses $x' \in G$ existiert, sodass $x*x'=e$ gilt.
 \Cf[158]{schmeh2007}
-Beispiele für solche Gruppen sind beispielsweise die Addition in den ganzen Zahlen $(\mathbb{Z}, +)$, die Multiplikation in den reellen Zahlen $(\mathbb{R}, \cdot)$, sowie die Moduloaddition%
+Beispiele für Gruppen sind die Menge der ganzen Zahlen mit der üblichen Addition $(\mathbb{Z}, +)$, die reellen Zahlen mit der Multiplikation $(\mathbb{R}, \cdot)$, sowie ein beliebiger Restklassenring $(\mathbb{Z}_n, +)$ mit der Moduloaddition%
 \footnote{Modulooperationen sind ähnlich den Operationen in $\mathbb{Z}$, wobei bloß Divisionsreste betrachtet werden.
 Zwei Zahlen heißen kongruent ($\equiv$) bezüglich einem Modul $m$, wenn sie bei der Division durch $m$ den selben Rest aufweisen.
 So gilt beispielsweise: $1 \equiv 3 \pmod{2}$ \\
-Die Moduloaddition ist also als $f(x,y) \equiv x+y \pmod{m}$ definiert, wobei $f$ nicht den Wert einer Zahl sondern eine Restklasse (Die Menge aller Zahlen mit dem selben Rest) annimmt.}
-in einem beliebigen Restklassenring $(\mathbb{Z}_n, +)$.
+Die Moduloaddition ist also als $f(x,y) \equiv x+y \pmod{m}$ definiert, wobei $f$ nicht den Wert einer Zahl sondern eine Restklasse (Die Menge aller Zahlen mit dem selben Rest) annimmt.}%
+.
 
 In den meisten Gruppen ist das Inverse trivial zu berechnen und es existiert eine brauchbare Umkehrfunktion.
 Betrachten wir beispielsweise eine Gruppe über $\mathbb{R}$ mit der Verknüpfung $c = a \cdot b$.
 Hier sind die Umkehrfunktionen $a = \frac{c}{b}$ und $b = \frac{c}{a}$ und das Inverse $x'=\frac{1}{x}$, weil $x \cdot \frac{1}{x} = 1$ gilt und $1$ das neutrale Element bezüglich der Multiplikation ist.
 
 Anders sieht es mit der Modulomultiplikation in der Menge $\{ 1, \dotsc, pq \mid p,q \in \mathbb{P}\}$ aus.
-Dabei handelt es sich analog zur Multiplikation um die Funktion $c \equiv a \cdot b \pmod{m}$ in einer Menge an Restklassen.
+Dabei handelt es sich analog zur Multiplikation um die Funktion $c \equiv a \cdot b \pmod{m}$ in einer Menge an Restklassen.%
+\footnote{Hierbei handelt es sich zwar um keine Gruppe, es existiert aber ein Inverses für alle zum Modul teilerfremden Zahlen und ein neutrales Element. \Cf[155]{schmeh2007}}
 Die Umkehrfunktion (das Dividieren) ist hierbei nicht möglich und das Inverse ist nur bei Kentnis von $\varphi(m)$ zu berechnen.
 Die Eulersche Phi-Funktion $\varphi(x)$ gibt die Anzahl der zu $x$ teilerfremden Zahlen an, die kleiner als $x$ sind.
 Diese Funktion ist nur mithilfe einer Primfaktorzerlegung berechenbar,%
@@ -100,7 +101,7 @@ Ebenso soll es mit realistischem Aufwand nicht möglich sein, zwei Urbilder zu f
 Solche Einweg-Hashes%
 \footnote{\emph{Einweg} bezieht sich in diesem Kontext darauf, dass nur die Berechnung von Urbild zu Hash möglich ist, man aus dem Hash jedoch keinerlei Informationen über das Urbild schließen kann.}
 erlauben es zum Beispiel Prüfziffern zu erstellen, die nicht nur gegen zufällige Veränderungen Schutz bieten, sondern auch gegenüber böswilligen Angriffen.
-Übermittelt man jemanden zum Beispiel eine ausführbare Datei und teilt ihm auf einem sicheren Weg den Hash der Datei mit, kann sich der Empfänger --~sofern die Hashwerte übereinstimmen~-- sicher sein, dass die Datei unverändert ist.
-Denn wenn ein Angreifer zum Beispiel versucht einen Virus in die Datei einzuschleusen, wird sich der Hashwert verändern, egal wie sehr sich der Angreifer bemüht.
+Übermittelt man jemanden zum Beispiel eine ausführbare Datei und teilt ihm auf einem sicheren Weg den Hash der Datei mit, kann sich der Empfänger --~sofern die Hashwerte übereinstimmen~-- sicher sein, dass die Datei nicht von Dritten manipuliert wurde.
+Denn wenn ein Angreifer zum Beispiel versucht einen Virus in die Datei einzuschleusen, wird sich der Hashwert verändern, egal wie sehr sich der Angreifer um Geheimhaltung bemüht.
 
 Möchte man eine Nachricht signieren, so hat es oft Vorteile nur den Hash der Nachricht zu signieren und der Nachricht beizulegen, anstatt die gesamte Nachricht mit dem privaten Schlüssel zu verschlüsseln, da asymetrische Verschlüsselungen oft nicht für große Datenmengen geeignet sind.

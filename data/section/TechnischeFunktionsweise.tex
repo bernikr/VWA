@@ -1,7 +1,7 @@
 \subsection[Technische Funktionsweise von Bitcoin]{Technische Funktionsweise von Bitcoin\footnote{Dieser Abschnitt basiert auf \cite{nielsen}.}}
 \label{sec:mechanics}
 
-Mithilfe dieser kryptografischen Mechanismen lässt sich ein Zahlungsnetzwerk aufbauen, in welchem --~im Gegensatz zu herkömmlichen Banken~-- keine zentrale vertrauenswürdige Stelle notwendig ist.
+Mithilfe dieser kryptografischen Mechanismen lässt sich ein Zahlungsnetzwerk aufbauen, in welchem --~im Gegensatz zu herkömmlichen Banken~-- keine vertrauenswürdige Stelle notwendig ist.
 Wie sich der Stand eines Kontos aus vorangegangen Transaktionen ergibt, so setzt sich auch der Kontostand einer Bitcoin-Adresse aus vorhergegangen Transaktionen zusammen.
 Da es keine zentrale Stelle gibt, müssen alle Kontobewegungen und Guthabensstände öffentlich gemacht werden, um Betrug zu verhindern.
 
@@ -30,7 +30,7 @@ Da man aber nicht immer den vollen Betrag einer vorherigen Transaktion ausgeben 
 Ebenfalls sollte es möglich sein, zwei Transaktionen zu referenzieren und die Summe ihrer Bitcoins zu transferieren.
 Um das zu ermöglichen, kann eine Transaktion, wie in Abbildung \ref{fig:transaction} dargestellt, aus mehreren Eingängen und mehreren Ausgängen bestehen.
 Ein Eingang referenziert dabei immer einen Ausgang einer vorherigen Transaktion, welcher dabei unbrauchbar wird.%
-\footnote{Möchte man nur einen Teil der Bitcoins aus der alten Transaktion ausgeben, so muss es zwei Ausgänge geben, wobei einer einen Teil an eine andere Adresse sendet und der andere den Rest wider zurück an einen selbst.}
+\footnote{Möchte man nur einen Teil der Bitcoins aus der alten Transaktion ausgeben, so muss es zwei Ausgänge geben, wobei einer einen Teil an eine andere Adresse sendet und der andere den Rest wieder zurück an einen selbst.}
 Die Summe der Ausgänge ist dabei für gewöhnlich kleiner als die der Eingänge, da die Differenz als Transaktionsgebühr dient. (Siehe Abschnitt \ref{subsec:mining})
 
 \begin{figure}[htb]
