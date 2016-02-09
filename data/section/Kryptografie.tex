@@ -11,7 +11,7 @@ Hierzu werden hauptsächlich zwei kryptografische Prozesse exzessiv genutzt:
 
 Bei traditionellen symmetrischen Verschlüsselungen, teilen sich Sender und Empfänger einen geheimen Schlüssel, der zum ver- und entschlüsseln verwendet wird.
 Beispielsweise möchte Alice eine Nachricht an Bob senden ohne das Eve ihren Inhalt mitbekommt, obwohl sie den gesamten Nachrichtenverkehr zwischen den beiden mitliest.
-Wenn die beiden über einen gemeinsamen, Eve nicht bekannten Schlüssel verfügen, kann Alice ihre Nachricht verschlüsseln, an Bob senden und dieser mit demselben Schlüssel entschlüsseln ohne das Eve den Inhalt erfährt.
+Wenn die beiden über einen gemeinsamen, Eve nicht bekannten Schlüssel verfügen, kann Alice ihre Nachricht verschlüsseln, an Bob senden und dieser kann diese mit demselben Schlüssel entschlüsseln ohne das Eve den Inhalt erfährt.
 Doch wenn sie sich noch nicht über einen gemeinsamen Schlüssel geeinigt haben, ist es schwer sich diesen gegenseitig zukommen zu lassen, ohne dass Eve davon erfährt.
 
 An dieser Stelle setzen \emph{asymmetrische Verschlüsselungen} an.
@@ -32,13 +32,15 @@ in einem beliebigen Restklassenring $(\mathbb{Z}_n, +)$.
 
 In den meisten Gruppen ist das Inverse trivial zu berechnen und es existiert eine brauchbare Umkehrfunktion.
 Betrachten wir beispielsweise eine Gruppe über $\mathbb{R}$ mit der Verknüpfung $c = a \cdot b$.
-Hier sind die Umkehrfunktionen $a = \frac{c}{b}$ und $b = \frac{c}{a}$ und das Inverse $x'=\frac{1}{x}$, weil $x \cdot \frac{1}{x} = 1$ und $1$ das neutrale Element bezüglich der Multiplikation ist.
+Hier sind die Umkehrfunktionen $a = \frac{c}{b}$ und $b = \frac{c}{a}$ und das Inverse $x'=\frac{1}{x}$, weil $x \cdot \frac{1}{x} = 1$ gilt und $1$ das neutrale Element bezüglich der Multiplikation ist.
 
 Anders sieht es mit der Modulomultiplikation in der Menge $\{ 1, \dotsc, pq \mid p,q \in \mathbb{P}\}$ aus.
 Dabei handelt es sich analog zur Multiplikation um die Funktion $c \equiv a \cdot b \pmod{m}$ in einer Menge an Restklassen.
-Die Umkehrfunktion (das Dividieren) ist hierbei nicht möglich und das Inverse ist nur bei Kentnis von $\phi(m)$ zu berechnen.
-Die Eulersche Phi-Funktion $\phi(x)$ gibt die Anzahl der zu $x$ teilerfremden Zahlen an, die kleiner als $x$ sind.
-Diese Funktion ist nur mithilfe einer Primfaktorzerlegung berechenbar, welche wiederum für das Produkt zweier hoher Primzahlen nicht in absehbarer Zeit berechenbar ist.
+Die Umkehrfunktion (das Dividieren) ist hierbei nicht möglich und das Inverse ist nur bei Kentnis von $\varphi(m)$ zu berechnen.
+Die Eulersche Phi-Funktion $\varphi(x)$ gibt die Anzahl der zu $x$ teilerfremden Zahlen an, die kleiner als $x$ sind.
+Diese Funktion ist nur mithilfe einer Primfaktorzerlegung berechenbar,%
+\footnote{Kennt man die Primfaktorzerlegung $p_1 \cdot p_2 \dotsm p_n$ einer Zahl $a$, so gilt $\varphi (a) = (p_1-1) (p_2-1) \dotsm (p_n-1)$.}
+welche wiederum für das Produkt zweier hoher Primzahlen nicht in absehbarer Zeit berechenbar ist.
 Wählt man also zwei hohe Primzahlen $p$ und $q$ und einen Schlüssel $x$ und mutipliziert die Primzahlen zu dem Modul $m$, ist das Inverse des Schlüssels nur berechenbar, wenn man die ursprünglichen Zahlen kennt.
 \Cf[166]{schmeh2007}
 
@@ -46,7 +48,7 @@ Betrachtet man nun die Operation $b \equiv a^x \pmod{m}$.%
 \footnote{Das diese Operation durgeführt werden kann ist nicht immer gegeben. Für eine genaue Erklärung siehe \cite[157-160]{schmeh2007}.}
 Hierbei ist die Umkehrfunktion --~der diskrete Logarithmus%
 \footnote{Der \emph{diskrete} Logarithmus sucht eine \emph{ganze Zahl} $x$, für die die Gleichung $y \equiv a^x \pmod{m}$ bei gegebenem $y$, $a$ und $m$ gilt.}
-~-- für größere Werte mit heutigen Algorithmen nicht in absehbarer Zeit zu berechnen.
+~-- für größere Werte mit heutigen Algorithmen ebenfalls nicht in absehbarer Zeit zu berechnen.
 Kennt man jedoch das Inverse von $x$ so lässt sich aufgrund der Beziehung $a \equiv (a^x)^{x'} \pmod{m}$ mithilfe von $x'$, $b$ und $m$ wieder $a$ ausrechnen.
 \Cf[160]{schmeh2007}
 
@@ -56,20 +58,21 @@ Um von der asymmetrischen Verschlüsselung Gebrauch zu machen, wählt Alice zwei
 Danach berechnet Alice das Produkt $m$ der Primzahlen und verwirft diese.
 Den privaten Schlüssel behält Alice für sich und während sie das Inverse und das Produkt an Bob sendet.
 Hierbei ist es egal, ob auch andere Personen den Schlüssel erhalten, da dieser öffentlich ist.
-Nachdem Bob den öffentlichen Schlüssel von Alice erhalten hat, sind zwei Kryptografische Prozesse möglich:
+Nachdem Bob den öffentlichen Schlüssel von Alice erhalten hat, sind zwei kryptografische Prozesse möglich:
 \begin{enumerate}
     \item Bob verschlüsselt eine Nachricht mit dem öffentlichen Schlüssel und sendet sie an Alice.
     Da nur Alice den privaten Schlüssel hat, kann Eve mit der Nachricht nichts anfangen.
     \item Alice verschlüsselt eine Nachricht (oder einen Hash davon) mit dem privaten Schlüssel.
-    Somit kann diese von jedem mit dem öffentlichen Schlüssel entschlüsselt werden.
     Dieser Prozess wird \emph{Signieren} genannt.
+    Somit kann die Nachricht von jedem mit dem öffentlichen Schlüssel entschlüsselt werden.
     Da aber nur Alice den privaten Schlüssel innehat, lässt sich somit die Authentizität der Nachricht verifizieren.
     So kann Bob sich sicher sein, dass diese nicht auf dem Weg verändert wurde und sicher von Alice stammt.
 \end{enumerate}
 
-Die Prozesse der Ver- und Entschlüsselung sind (bis auf den verwendeten Schlüssel) identisch aus einer Anwendung der Exponentialfunktion.
+Die Prozesse der Ver- und Entschlüsselung sind (bis auf den verwendeten Schlüssel) identisch und bestehen aus einer Anwendung der Exponentialfunktion.
 Die Verschlüsselung eines Klartextes $K$ zu einem Geheimtext $G$ erfolgt mit dem öffentlichen Schlüssel $o$ über den Modul $m$ mithilfe von $G \equiv K^o \pmod{m}$.
 Die Entschlüsselung erfolgt analog dazu mit dem geheimen Schlüssel $g$: $K \equiv G^g \pmod{m}$.
+Dies funktioniert da $g \cdot o \equiv 1 \pmod{m}$ gilt.
 
 Die Anwendung bei Bitcoin erfolgt dabei so, dass jeder, der Bitcoins verwenden möchte ein Schlüsselpaar erstellt.
 In diesem Kontext wird der öffentliche Schlüssel Bitcoin-Adresse genannt.
@@ -99,3 +102,5 @@ Solche Einweg-Hashes%
 erlauben es zum Beispiel Prüfziffern zu erstellen, die nicht nur gegen zufällige Veränderungen Schutz bieten, sondern auch gegenüber böswilligen Angriffen.
 Übermittelt man jemanden zum Beispiel eine ausführbare Datei und teilt ihm auf einem sicheren Weg den Hash der Datei mit, kann sich der Empfänger --~sofern die Hashwerte übereinstimmen~-- sicher sein, dass die Datei unverändert ist.
 Denn wenn ein Angreifer zum Beispiel versucht einen Virus in die Datei einzuschleusen, wird sich der Hashwert verändern, egal wie sehr sich der Angreifer bemüht.
+
+Möchte man eine Nachricht signieren, so hat es oft Vorteile nur den Hash der Nachricht zu signieren und der Nachricht beizulegen, anstatt die gesamte Nachricht mit dem privaten Schlüssel zu verschlüsseln, da asymetrische Verschlüsselungen oft nicht für große Datenmengen geeignet sind.
