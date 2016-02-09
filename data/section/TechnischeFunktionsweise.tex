@@ -1,11 +1,11 @@
-\section[Technische Funktionsweise von Bitcoin]{Technische Funktionsweise von Bitcoin\footnote{Dieser Abschnitt basiert auf \cite{nielsen}.}}
+\subsection[Technische Funktionsweise von Bitcoin]{Technische Funktionsweise von Bitcoin\footnote{Dieser Abschnitt basiert auf \cite{nielsen}.}}
 \label{sec:mechanics}
 
 Mithilfe dieser kryptografischen Mechanismen lässt sich ein Zahlungsnetzwerk aufbauen, in welchem --~im Gegensatz zu herkömmlichen Banken~-- keine zentrale vertrauenswürdige Stelle notwendig ist.
 Wie sich der Stand eines Kontos aus vorangegangen Transaktionen ergibt, so setzt sich auch der Kontostand einer Bitcoin-Adresse aus vorhergegangen Transaktionen zusammen.
 Da es keine zentrale Stelle gibt, müssen alle Kontobewegungen und Guthabensstände öffentlich gemacht werden, um Betrug zu verhindern.
 
-\subsection{Transaktionen}
+\subsubsection{Transaktionen}
 
 Transaktionen sind wohl der wichtigste Bestandteil des Bitcoin-Netzwerks.
 Schon im White Paper zu Bitcoin werden Bitcoins als Kette von signierten Transaktionen definiert:
@@ -44,7 +44,7 @@ Die Summe der Ausgänge ist dabei für gewöhnlich kleiner als die der Eingänge
 Nach dem Signieren der Transaktion wird diese von dem Bitcoin-Client über das Internet an andere Instanzen der Bitcoin-Software gesendet, welche die Transaktion auf gültigkeit überprüft und danach wiederum weitersendet.
 So wird die Transaktion innerhalb kürzester Zeit mehrmals verifiziert und im gesamten Bitcoin-Netzwerk verteilt.
 
-\subsection{Adressen}
+\subsubsection{Adressen}
 
 Zum Signieren und Verifizieren von Transaktionen wird ein asymetrisches Schlüsselpaar benötigt.
 Dadurch wird gewährleistet, dass nur autorisierte Personen die Ausgänge vergangener Transaktionen als Eingang in ihrer Transaktion verwenden können.
@@ -67,7 +67,7 @@ Um die Handhabung zu vereinfachen wird diese Adresse mithilfe von Base58%
 in 27-34 alphanumerische Zeichen kodiert.%
 \footnote{Eine Bitcoin-Adresse sieht beispielsweise so aus: \texttt{1JQW4iRksV11pKSF4bnSXzeNMaqvc37Mq7}}
 
-\subsection{Die Blockchain}
+\subsubsection{Die Blockchain}
 
 Um die Transaktion zu speichern werden alle Transaktionen, welche weltweit in einem bestimmten Zeitinterval stattfinden, in sogenannte \emph{Blocks} zusammengefasst.
 Da jeder Block neben den Transaktionen auch eine Referenz in Form des Hashes auf den vorherigen Block beinhaltet, entsteht eine einzige lineare Kette von Blöcken -- \emph{Blockchain} genannt.
@@ -81,7 +81,7 @@ Aufgrund der Linearität der Blockchain kann gewährleistet werden, dass jeder T
     \end{center}
 \end{figure}
 
-\subsubsection{Mining}
+\paragraph{Mining}
 \label{subsec:mining}
 
 Unter \emph{Mining} versteht man das Generieren von Blöcken.
@@ -112,7 +112,7 @@ Da Grafikkarten für manche Rechenoperationen schneller sind als Prozessoren wur
 Seit Ende 2012 gibt es auch dezidierte Mining-Hardware, welche nur dazu gebaut wird, Bitcoin-Mining zu betreiben.
 Mit dieser Hardware sind inzwischen Geschwindigkeiten von bis zu 8~THash/s (8~Billionen Hashwertberechnungen pro Sekunde) möglich.
 
-\subsubsection{Linearität}
+\paragraph{Linearität}
 
 Sollte es einmal vorkommen, dass ein Miner einen Block findet, bevor er den aktuellsten Block vom Bitcoin-Netzwerk erhalten hat, kommt es zu einer Verzweigung der Blockchain.
 Hierbei kann es vorkommen, dass dieselben Bitcoins in jedem der Blöcke an verschiedene Empfänger gesendet werden.
