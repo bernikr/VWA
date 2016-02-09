@@ -1,15 +1,22 @@
 ---
 title: 'VWA Begleitprotokoll'
-author: Bernhard Kralofsky
+author: Bernhard Kralofsky 8D
 header-includes:
 - \pagenumbering{gobble}
 ---
+Titel der Arbeit: "Bitcoin: Die Zukunft einer Kryptowährung"  
+Betreungslehrer: Mag. Bernhard Klimbacher
+
 \begin{center}
 \begin{tabular}{r|p{7cm}}
-16. 4. 2015 & Lehrergespräch über das VWA-Contracting \\
-25. 6. - 1. 7. 2015 & VWA-Tage (siehe beiliegendes Protokoll)\\
-6. - 19. 7. 2015 & 1. Ferienarbeitsphase (Recherche und Schreiben des ersten Kapitels)\\
-15. - 21. 8. 2015 & 2. Ferienarbeitsphase (Überarbeiten des ersten Kapitels)\\
-26. 12. 2015 - 10. 1. 2016 & Weihnachtsferien (Schreiben des Großteils der Arbeit)\\
+15. 1. 2015 & Festlegung des Themas und Erwartungshorizont mit dem Betreuungslehrer \\
+16. 4. 2015 & Lehrergespräch über den Arbeitsprozess \\
+25. 6. - 1. 7. 2015 & VWA-Tage (siehe beiliegendes Protokoll) \\
+Sommerferien & Recherche, Schreiben und Überarbeiten des ersten Kapitels \\
+29. 9. 2015 &  Lehrergespräch über den Text des ersten Kapitels \\
+Oktober - Dezember 2015 & Recherche und Schreiben der restlichen Arbeit \\
+Jänner 2016 & Überarbeitung der Arbeit, mehere Kurzbesprechungen über verschiedene formale Fragen \\
 \end{tabular}
 \end{center}
+
+Die Arbeit hat eine Länge von 44.700 Zeichen.
