@@ -19,4 +19,4 @@ Jänner 2016 & Überarbeitung der Arbeit, mehere Kurzbesprechungen über verschi
 \end{tabular}
 \end{center}
 
-Die Arbeit hat eine Länge von 44.700 Zeichen.
+Die Arbeit hat eine Länge von 45.113 Zeichen.
