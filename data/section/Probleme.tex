@@ -6,7 +6,7 @@ Wie schon in Abschnitt \ref{sec:speculation} erwähnt leidet Bitcoin an einem In
 Damit Bitcoin als wirkliche Währung verwendet werden kann und nicht nur als Zahlungsmittel,%
 \footnote{Der Unterschied besteht darin, dass Händler die Preise derzeit in Euro oder Dollar anschreiben und nach dem aktuellen Bitcoinkurs umrechnen, bevor man zur Zahlung schreitet, anstatt die Preise direkt in Bitcoin anzugeben.}
 muss dieser Kreis durchbrochen werden.
-Bitcoin funktioniert derzeit zwar sehr gut als dezentrales Zahlungsmittel und als Geldanlage, doch kaum jemand würde auf die Idee kommen, nur noch Bitcoin zu verwenden und herkömmlichen Währungen den Rücken zuzukehren.
+Bitcoin funktioniert derzeit zwar sehr gut als Geldanlage und dezentrales Zahlungsmittel, doch kaum jemand würde auf die Idee kommen, nur noch Bitcoin zu verwenden und herkömmlichen Währungen den Rücken zuzukehren.
 
 \subsection{Praktikabilität im Alltag}
 
@@ -43,12 +43,12 @@ Man kann nur darauf hoffen, dass die in Abschnitt \ref{subsec:mining} beschriebe
 Doch nicht alle Probleme sind vom Konzept so grundlegend und scheinbar unlösbar.
 2010 wurde die Größe eines Blockes von 36~MB auf 1~MB herabgesetzt, um zu vermeiden, das Miner Spam-Blöcke mit mehreren Megabyte an sinnlosem Inhalt erstellen und diese die Blockchain unnötig vergrößern.
 Damals war das auch kein Problem, da sich die durchschnittliche Größe eines Blockes im Bereich von wenigen Kilobyte befand.
-Anfang 2015 stellte man allerdings fest, dass aufgrund der immer weiteren Verbreitung von Bitcoin die Anzahl der Transaktionen und somit auch die Größe der Blöcke rasant anstieg und drohte an die 1~MB-Grenze zu gelangen.
+Anfang 2015 stellte man allerdings fest, dass aufgrund der immer weiteren Verbreitung von Bitcoin die Anzahl der Transaktionen und somit auch die Größe der Blöcke rasant anstieg und droht an die 1~MB-Grenze zu gelangen.
 \Cf{caffyn}
 
-Die Folgen des Erreichens wären nach einigen Meinungen fatal.
+Die Folgen des Erreichens des Limits wären einigen Meinungen nach fatal.
 Da nicht mehr alle Transaktionen in die Blöcke aufgenommen werden können, kommt es zu einem Wettbewerb bei der Transaktionsgebühr.
-Nur noch Transaktionen welche den Minern die meisten Bitcoins überließen würden bestätigt, andere Transaktionen mit zu wenig Gebühr befänden sich dann für immer im Rückstau der Miner.
+Nur noch Transaktionen, welche den Minern die meisten Bitcoins überließen, würden bestätigt, andere Transaktionen mit zu wenig Gebühr befänden sich dann für immer im Rückstau der Miner.
 Während viele dabei das Ende von Bitcoin befürchten, sind andere der Meinung, dass diese Form des freien Marktes die einzige Lösung der Debatte sei.
 
 Die Vielzahl der anderen Lösungsvorschläge haben den Punkt das Limit anzuheben gemein, unterscheiden sich doch in Details, wie der Höhe des Limits oder des Verlaufes über längere Zeit.
@@ -56,7 +56,7 @@ Unter anderem schlägt Gavin Anderson, der ehemalige leitende Entwickler des Bit
 Andere Vorschläge sind zum Beispiel die sofortige Anhebung auf 2~MB und danach eine jährliche Erhöhung von 17,7\%.
 \Cf{caffyn}
 
-Während diese Details unwichtig erscheinen, ist es aufgrund der dezentralen Natur des Bitcoin-Netzwerkes nicht möglich, Änderung vorzunehmen, solange kein Konsens erreicht ist.
+Während diese Details unwichtig erscheinen, ist es aufgrund der dezentralen Natur des Bitcoin-Netzwerkes nicht möglich, Änderungen vorzunehmen, solange kein Konsens erreicht ist.
 Erst wenn sich die Entwickler einig sind, kann einer der Vorschläge umgesetzt werden.
 Doch nicht nur die Entwickler haben ein Wort mitzureden:
 Wenn nach Veröffentlichung einer neuen Version mehr als die Hälfte der Miner bei der alten Version bleibt, wird die längere Blockchain weiterhin die alte Version verwenden und es wird zu keinen Änderungen kommen.
@@ -64,9 +64,9 @@ Die Zustimmung der Miner zu bekommen ist jedoch auch schwierig, da mehr als 50\%
 \Cf{caffyn}
 
 Der letze große Vorschlag in der Debatte wird \emph{Segregated Witness} genannt.
-Im Gegensatz zu den anderen Vorschlägen, bei welchen es sich um \emph{Hard-Forks} handelt (d.\,h. die neue Version beinhaltet nicht rückwärtskompatible Änderung, wodurch Bitcoin in eine neue und eine alte Version aufgespalten werden) ist \emph{Segrageted Witness} ein \emph{Soft-Fork}, bei welchem alte Bitcoin-Clients weiterhin verwendbar sind und nur die Miner auf die neueste Version updaten müssen.
-\emph{Segrageted Witness} schlägt vor, die eigentlich Transaktion (Inputs, Outputs und Beträge) von dem Teil zu trennen der nur für die Verifikation von Relevanz ist (v.a. Signatur) und diesen Teil nur solange zu speichern, solange er benötigt wird und ihn daher nicht in die Blockchain aufnehmen.
-Denn sobald eine neue Transaktion auf eine alte aufbaut, ist es nicht mehr nötig, die alte Transaktion auf Gültigkeit zu überprüfen, da diese sowieso nicht mehr verändert werden kann.
+Im Gegensatz zu den anderen Vorschlägen, bei welchen es sich um \emph{Hard-Forks} handelt (d.\,h. die neue Version beinhaltet nicht-rückwärtskompatible Änderung, wodurch Bitcoin in eine neue und eine alte Version aufgespalten werden) ist \emph{Segrageted Witness} ein \emph{Soft-Fork}, bei welchem alte Bitcoin-Clients weiterhin verwendbar sind und nur die Miner auf die neueste Version updaten müssen.
+\emph{Segrageted Witness} schlägt vor, die eigentlich Transaktion (Inputs, Outputs und Beträge) von dem Teil zu trennen der nur für die Verifikation von Relevanz ist (v.a. Signatur) und diesen Teil nur solange zu speichern, solange er benötigt wird und ihn daher nicht in die Blockchain aufzunehmen.
+Denn sobald eine neue Transaktion auf einer alten aufbaut, ist es nicht mehr nötig, die alte Transaktion auf Gültigkeit zu überprüfen, da diese sowieso nicht mehr verändert werden kann.
 Da diese Informationen zum Überprüfen derzeit zirka zwei Drittel der Blockchain beanspruchen, könnte dadurch viel Speicherplatz gespart werden und das 1~MB-Limit aufrechterhalten werden.
 \Cf{rizzo}
 

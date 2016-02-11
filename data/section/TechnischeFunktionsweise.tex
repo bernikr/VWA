@@ -15,7 +15,7 @@ We define an electronic coin as a chain of digital signatures. Each owner transf
 \end{longquote}
 
 Denn anstatt einen Kontostand zu speichern und ihn bei jeder Transaktion zu verändern (was anfällig für Manipulation wäre), beziehen sich Transaktion auf vorhergegangene Transaktionen, damit die Herkunft und somit die Gültigkeit der Bitcoins verifiziert wird.
-Um Bitcoin zu versendenden, muss man also eine vorhergegangene Transaktion referenzieren, durch welche man die Bitcoins erhalten hat und anschließend die Transaktion signieren, um zu Beweisen, dass man berechtigt ist jene zu versenden.
+Um Bitcoin zu versendenden, muss man also eine vorhergehende Transaktion referenzieren, durch welche man die Bitcoins erhalten hat und anschließend die Transaktion signieren, um zu Beweisen, dass man berechtigt ist jene zu versenden.
 Abbildung \ref{fig:transactionchain} zeigt eine Darstellung einer so entstehenden Transaktionskette, in der Bitcoins von Besitzer 0 bis zu Besitzer 3 wandern.
 
 \begin{figure}[t]
@@ -58,7 +58,7 @@ Betrachtet man die mittlere Transaktion, in welcher Besitzer 1 seine Bitcoins an
 Diese Transaktion kann nun von jedem überprüft werden, indem er die Signatur mit dem öffentlichen Schlüssel aus der vorhergegangenen Transaktion verifiziert.
 
 Diese öffentliche Nachvollziehbarkeit ist die Grundlage der Funktionsweise von Bitcoin.
-Erst durch die aus der asymmetrischen Verschlüsselung folgenden Signaturen ist es möglich den Urheber einer Transaktion ohne eine Vertrauensstelle zu überprüfen.
+Erst durch die aus der asymmetrischen Verschlüsselung folgenden Signaturen ist es möglich, den Urheber einer Transaktion ohne eine Vertrauensstelle zu überprüfen.
 
 Aufgrund der Tatsache, dass man nur den öffentlichen Schlüssel einer anderen Person braucht, um ihr Bitcoins zukommen zu lassen, wird dieser Bitcoin-Adresse genannt.
 Die Bitcoin-Adresse ist eine 160~Bit lange Zahl, welcher eine 32~Bit lange Prüfsumme folgt.
@@ -98,12 +98,12 @@ Sollte der Hash größer sein, so gibt es einen 32-Bit großen Teil des Blockes 
 Da sich der Hash scheinbar zufällig ändert, muss der Miner relativ viele Hashwerte berechnen, bis er einen gültigen findet.
 Der Zielwert wird anhand einer Formel alle zwei Wochen angepasst, damit, egal wie viel Mining betrieben wird, immer durchschnittlich alle 10 Minuten ein gültiger Block gefunden wird.
 
-Um die Miner für die aufgewandte Rechenleistung und Stromkosten zu entschädigen, verdient er auf zwei verschiedene Arten Bitcoin:
+Um die Miner für die aufgewandte Rechenleistung und Stromkosten zu entschädigen, verdienen sie auf zwei verschiedene Arten Bitcoins:
 \begin{enumerate}
     \item Transaktionen beinhalten eine Transaktionsgebühr in Form der Differenz zwischen Eingang und Ausgang.
     Ein Miner darf diese Transaktionsgebühr aus allen in seinem Block inkludierten Transaktionen an seine eigene Bitcoin-Adresse senden.
-    \item Um Bitcoins zu erschaffen und einen Anfang für Transaktionsketten zu bieten, beinhaltet jeder Block eine Transaktion die Bitcoins aus dem Nichts schafft.
-    Diese Belohnung für das Mining betrug am Anfang 50 Bitcoins pro Block, wird aber alle 210000 Blöcke (ca. alle 4 Jahre) halbiert, so dass Bitcoin trotz dauerhafter Zufuhr auf ein Maximum von 21 Millionen Bitcoins limitiert ist.
+    \item Um Bitcoins zu erschaffen und einen Anfang für Transaktionsketten zu bieten, beinhaltet jeder Block eine Transaktion, welche Bitcoins aus dem Nichts erschafft.
+    Diese Belohnung für das Mining betrug am Anfang 50 Bitcoins pro Block, wird aber alle 210000 Blöcke (ca. alle 4 Jahre) halbiert, sodass Bitcoin trotz dauerhafter Zufuhr auf ein Maximum von 21 Millionen Bitcoins limitiert ist.
 \end{enumerate}
 
 Aufgrund dieser Eigenschaften kann Mining profitabel sein, wenn der Wert der erhaltenen Bitcoins über dem der Anschaffungs- und Betriebskosten der Mining-Hardware liegt.
@@ -114,9 +114,9 @@ Mit dieser Hardware sind inzwischen Geschwindigkeiten von bis zu 8~THash/s (8~Bi
 
 \paragraph{Linearität}
 
-Sollte es einmal vorkommen, dass ein Miner einen Block findet, bevor er den aktuellsten Block vom Bitcoin-Netzwerk erhalten hat, kommt es zu einer Verzweigung der Blockchain.
+Sollte es einmal vorkommen, dass ein Miner einen Block findet, bevor er den aktuellen Block des Bitcoin-Netzwerks erhalten hat, kommt es zu einer Verzweigung der Blockchain.
 Hierbei kann es vorkommen, dass dieselben Bitcoins in jedem der beiden Blöcke an verschiedene Empfänger gesendet werden.
 Um zu verhindern, dass man somit Bitcoins verdoppeln kann, darf nur einer der zwei gleichzeitig generierten Blöcke weiterverwendet werden, während der andere für ungültig erklärt wird.
 Die Auswahl des ungültigen Blocks geschieht gewissermaßen durch Zufall:
-Während jeder Bitcoin-Client und jeder Miner zuerst den Block verwendet, den er als erstes erhalten hat, werden sich alle Beteiligten über den nächsten Block einig, sobald ein Miner den diesen findet, egal welcher der beiden Blöcke als Ursprung dient.
+Während jeder Bitcoin-Client und jeder Miner zuerst den Block verwendet, den er als erstes erhalten hat, werden sich alle Beteiligten über den nächsten Block einig, sobald ein Miner diesen findet, egal welcher der beiden Blöcke als Ursprung dient.
 Die in dem jetzt ungültigen Block gelisteten Transaktionen sind somit noch nicht verifiziert worden und werden in die nächsten Blöcke aufgenommen.
